@@ -1,4 +1,4 @@
-*{
+body{
     font-family: 'Times New Roman', Times, serif;
     background-color: #2e333a;
     font-weight: bold;
@@ -141,6 +141,7 @@
 }
 
 .text {
+    position: relative;
     display: flex;
     font-size: 1.3em; /* Kích thước chữ cho từng mục trong danh sách */
     padding: 10px; /* Khoảng cách bên trong cho các mục */
@@ -161,4 +162,50 @@
     background-color: white;
     text-decoration: none;
 }
+.note-stats {
+    position: absolute;
+    width: 10%;
+    background-color: white;
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các hàng .note-text */
+    right: 20%;
+}
+
+.note-text {
+    display: block; /* Đảm bảo mỗi .note-text là một khối riêng biệt */
+    margin: 0; /* Loại bỏ margin mặc định */
+}
+
+.note-text dt {
+    font-weight: bold; /* Đậm chữ cho tiêu đề */
+    margin-bottom: 4px; /* Khoảng cách giữa dt và dd */
+}
+
+.note-text dd {
+    margin: 0; /* Bỏ margin mặc định */
+    padding-left: 10px; /* Thụt lề nếu cần */
+}
+
+.note-extra {
+    position: absolute;
+    width: 10%;               /* Chiều rộng của phần tử */
+    height: 40px;            /* Chiều cao của phần tử */
+    display: block;           /* Sử dụng flexbox để căn chỉnh */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+    background-color: white; /* Màu nền cho phần tử */
+    right: 1px;
+}
+.space {
+    position: relative;
+    width: 70%; /* Chiều rộng của phần hall */
+    height: 300px; /* Chiều cao của phần hall */
+    background-color: white; /* Màu nền trắng */
+    margin: 20px 10px 0px 5%; /* Giữa trang */
+    border-radius: 8px; /* Bo tròn góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    flex-grow: 1;
+}
+
+
+
 
