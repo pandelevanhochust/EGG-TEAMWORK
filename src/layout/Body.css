@@ -1,0 +1,200 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #2e333a;
+    font-weight: bold;
+}
+.header {
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* Menu */
+.menu {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 60%;
+    flex-grow: 1;
+    position: relative;
+}
+
+.menu a {
+    color: #d0d0d0; /* Màu chữ */
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.menu a:hover {
+    color: #ffffff; /* Màu khi hover */
+}
+
+/* Login/Register buttons */
+.reader-button {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    left: 20px;
+    font-size: 1.25em;
+}
+.forum {
+    color: blue !important; /* Màu chữ */
+    background-color: white; /* Màu nền */
+    padding: 10px 10px; /* Khoảng cách bên trong để làm nút */
+    border-radius: 4px; /* Bo tròn góc */
+}
+.lastest {
+    padding: 10px 10px; /* Khoảng cách bên trong để làm nút */
+    border-radius: 4px; /* Bo tròn góc */
+}
+.auth-buttons {
+    display: flex;
+    align-self: center;
+    position: absolute;
+    right: 10px;
+}
+.auth-buttons button {
+    height: 50px;
+    width: 80px;
+    background-color: #2e333a; /* Nền bán trong suốt */
+    color: #d0d0d0;
+    font-size: 1.25em;
+    display: flex;
+    align-items: center;
+    border-top:black solid 1px;
+    box-sizing: content-box;
+}
+
+.auth-buttons {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #2e333a;
+    text-decoration: none;
+}
+
+.auth-buttons :hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+.new a {
+    display: block; /* Đảm bảo thẻ <a> là khối, giúp nó chiếm toàn bộ chiều rộng của div */
+    width: 100%; /* Chiếm toàn bộ chiều rộng của div chứa */
+    height: 30px; /* Chiều cao */
+    color: blue; /* Màu chữ (thay đổi thành đen để nổi bật hơn) */
+    text-decoration: none; /* Xóa gạch chân */
+    background-color: white; /* Màu nền */
+    line-height: 30px; /* Canh giữa chữ theo chiều dọc */
+    margin: 10px 0; /* Thêm khoảng cách giữa các nút */
+    text-align: start; /* Canh giữa chữ theo chiều ngang */
+    border-radius: 3px;
+}
+
+.new:hover {
+    text-decoration: underline; /* Gạch chân khi hover */
+    background-color: #f0f0f0; /* Thay đổi nền khi hover để có phản hồi rõ ràng */
+}
+.hall {
+    position: relative;
+    width: 70%; /* Chiều rộng của phần hall */
+    height: fit-content; /* Chiều cao của phần hall */
+    background-color: white; /* Màu nền trắng */
+    margin: 20px 10px 0px 5%; /* Giữa trang */
+    border-radius: 8px; /* Bo tròn góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    flex-grow: 1;
+}
+
+.home a {
+    font-size: 1.5em; /* Kích thước chữ cho liên kết */
+    color: white; /* Màu chữ liên kết */
+    text-decoration: none; /* Xóa gạch chân */
+    display: block; /* Để có thể thêm padding */
+    background-color: #7dafe4; /* Màu nền cho liên kết */
+    padding: 10px; /* Thêm khoảng cách bên trong */
+    border-radius: 5px; /* Bo tròn góc */
+    margin-bottom: 0; /* Xóa khoảng cách dưới */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển tiếp */
+}
+
+.home a:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+    color: #ffffff; /* Màu chữ khi hover */
+}
+
+
+.item-list {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    height: 100%;
+}
+
+.list {
+    position: relative;
+    display: flex;
+    font-size: 1.3em; /* Kích thước chữ cho từng mục trong danh sách */
+    padding: 10px; /* Khoảng cách bên trong cho các mục */
+    border-bottom: 1px solid #e0e0e0; /* Đường kẻ dưới mỗi mục */
+    background-color: white;
+}
+
+.list:hover {
+    background-color: #f5f5f5; /* Thay đổi nền khi hover */
+    cursor: pointer; /* Hiển thị con trỏ khi hover */
+}
+
+.list a {
+    height: 50px;
+    font-size: 1.3em; /* Kích thước chữ cho từng mục trong danh sách */
+    padding: 5px;
+    border-radius: 5px; /* Bo tròn góc */
+    background-color: white;
+    text-decoration: none;
+}
+.note-stats {
+    width: 15%;
+    height: 40px;
+    position: absolute;
+    background-color: white;
+    display: flex;
+    right: 20%;
+    flex-grow: 1;
+}
+.note-text {
+    display: block; /* Bỏ mặc định là block để sử dụng flex */
+    margin: 0; /* Bỏ margin nếu có */
+}
+
+.note-text dt, .note-text dd {
+    display: inline-block; /* Hiển thị chúng theo hàng ngang */
+    margin: 0; /* Bỏ margin để không có khoảng cách không cần thiết */
+}
+
+.note-text dd {
+    margin-left: 10px; /* Khoảng cách giữa dt và dd nếu cần */
+}
+.note-extra {
+    position: absolute;
+    right: 10%;
+}
+.space {
+    width: 70%; /* Chiều rộng của phần hall */
+    height: 3; /* Chiều cao của phần hall */
+    background-color: white; /* Màu nền trắng */
+    margin: 20px 10px 0px 5%; /* Giữa trang */
+    border-radius: 8px; /* Bo tròn góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    flex-grow: 1;
+}
+

@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import Body from "./layout/Body";
 import Header from "./layout/Header";
