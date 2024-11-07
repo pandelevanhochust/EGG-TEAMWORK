@@ -1,22 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
-import './Header.css';
 import Logo from '../assets/Logo1.png';
+import './Header.css';
 
 const Header = () => {
   return (
+    <header>
     <div className="header">
-      <header className="header">
-        <div className="logo">
+      <Link to = "/"className="logo">
+        <div >
           <img src={Logo} alt="Logo" />
         </div>
-      </header>
+      </Link>
 
       <nav className="menu">
         <div className="reader-button">
           <Link to="/" className="forum">Forums</Link>
-          <Link to="/topic" className="lastest">Latests</Link>
+          <Link to="/topic" className="lastest">Topic</Link>
         </div>
         <div className="auth-buttons">
           <Link to="/login"><button>Log in</button></Link>
@@ -24,6 +25,7 @@ const Header = () => {
         </div>
       </nav>
     </div>
+    </header>
   );
 }
 

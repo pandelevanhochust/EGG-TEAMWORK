@@ -1,48 +1,66 @@
 .header {
-    padding: 15px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* Logo */
-  .logo {
-    display: flex;
-    align-items: center;
-    font-size: 2em;
-    font-weight: bold;
-  }
-  
-  .logo img {
-    height: 50px; /* Adjust the height as necessary */
-    margin-right: 10px;
-  }
-  
-  /* Menu */
-  .menu {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    gap: 60%;
-    flex-grow: 1;
-    position: relative;
-  }
-  
-  .menu a {
-    color: #d0d0d0; /* Màu chữ */
-    text-decoration: none;
-    font-size: 1em;
-  }
-  
-  .menu a:hover {
-    color: #ffffff; /* Màu khi hover */
-  }
-  
-  /* Login/Register buttons */
-  .reader-button {
-    display: flex;
-    gap: 10px;
-    position: relative;
-    left: 20px;
-    font-size: 1.25em;
-  }
+  padding: 15px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2e333a;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjusted gap for better spacing */
+}
+
+.reader-button {
+  display: flex;
+  gap: 15px;
+}
+
+.reader-button a {
+  color: #d0d0d0;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.reader-button a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons button {
+  height: 40px;
+  width: 90px;
+  background-color: #2e333a;
+  color: #d0d0d0;
+  font-size: 1em;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.auth-buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}

@@ -1,11 +1,11 @@
 import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from "./layout/Header";
 import HomeScreen from "./layout/HomeScreen";
-import TopicScreen from './layout/TopicScreen';
 import LoginScreen from './layout/LoginScreen';
 import RegisterScreen from './layout/RegisterScreen';
-import Header from "./layout/Header";
+import TopicScreen from './layout/TopicScreen';
 
 function App() {
   return (
