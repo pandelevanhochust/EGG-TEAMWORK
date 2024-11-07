@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import './Body.css';
 
-const Body = () => {
+const HomeScreen = () => {
   return (
     <div className='body'>
       <div class="hall">
@@ -106,4 +106,4 @@ const Body = () => {
   )
 }
 
-export default Body
+export default HomeScreen
