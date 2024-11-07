@@ -1,86 +1,48 @@
-
 .header {
     padding: 15px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-/* Logo */
-.logo {
+  }
+  
+  /* Logo */
+  .logo {
     display: flex;
     align-items: center;
     font-size: 2em;
     font-weight: bold;
-}
-
-.logo img {
-    height: 50px;
+  }
+  
+  .logo img {
+    height: 50px; /* Adjust the height as necessary */
     margin-right: 10px;
-}
-
-/* Menu */
-.menu {
+  }
+  
+  /* Menu */
+  .menu {
     height: 60px;
     display: flex;
     align-items: center;
     gap: 60%;
     flex-grow: 1;
     position: relative;
-}
-
-.menu a {
+  }
+  
+  .menu a {
     color: #d0d0d0; /* Màu chữ */
     text-decoration: none;
     font-size: 1em;
-}
-
-.menu a:hover {
+  }
+  
+  .menu a:hover {
     color: #ffffff; /* Màu khi hover */
-}
-
-/* Login/Register buttons */
-.reader-button {
+  }
+  
+  /* Login/Register buttons */
+  .reader-button {
     display: flex;
     gap: 10px;
     position: relative;
     left: 20px;
     font-size: 1.25em;
-}
-.forum {
-    color: blue !important; /* Màu chữ */
-    background-color: white; /* Màu nền */
-    padding: 10px 10px; /* Khoảng cách bên trong để làm nút */
-    border-radius: 4px; /* Bo tròn góc */
-}
-.lastest {
-    padding: 10px 10px; /* Khoảng cách bên trong để làm nút */
-    border-radius: 4px; /* Bo tròn góc */
-}
-.auth-buttons {
-    display: flex;
-    align-self: center;
-    position: absolute;
-    right: 10px;
-}
-.auth-buttons button {
-    height: 50px;
-    width: 80px;
-    background-color: #2e333a; /* Nền bán trong suốt */
-    color: #d0d0d0;
-    font-size: 1.25em;
-    display: flex;
-    align-items: center;
-    border-top:black solid 1px;
-    box-sizing: content-box;
-}
-
-.auth-buttons {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #2e333a;
-    text-decoration: none;
-}
-
-.auth-buttons :hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-}
+  }
