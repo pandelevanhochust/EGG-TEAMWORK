@@ -1,29 +1,32 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
+import Logo from '../assets/Logo1.png';
 import './Header.css';
 
 const Header = () => {
   return (
+    <header>
     <div className="header">
-        <header class="header">
-        <div class="logo">
-        {/* <img src="image/voz-logo_2x.png" alt="Voz"> */}
+      <Link to = "/"className="logo">
+        <div >
+          <img src={Logo} alt="Logo" />
         </div>
-        </header>
+      </Link>
 
-    <nav class="menu">
-        <div class="reader-button">
-            <a href="https://voz.vn/" class="forum">Forums</a>
-            <a href="https://voz.vn/whats-new/" class="lastest">Latests</a>
+      <nav className="menu">
+        <div className="reader-button">
+          <Link to="/" className="forum">Forums</Link>
+          <Link to="/topic" className="lastest">Topic</Link>
         </div>
-        <div class="auth-buttons">
-            <button>Log in</button>
-            <button>Register</button>
+        <div className="auth-buttons">
+          <Link to="/login"><button>Log in</button></Link>
+          <Link to="/register"><button>Register</button></Link>
         </div>
-    </nav>
-
+      </nav>
     </div>
-  )
+    </header>
+  );
 }
 
-export default Header
+export default Header;

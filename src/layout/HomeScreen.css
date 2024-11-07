@@ -1,0 +1,103 @@
+.body {
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: #2e333a;
+    color: #d0d0d0;
+    border-radius: 8px;
+    width: 1300px;
+  }
+  
+  .body h2 {
+    font-size: 1.5em;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .home_noti {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* width: 1000px; */
+  }
+
+  .dynamic_programming {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* width: 1000px; */
+  }
+
+  .graph {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* width: 1000px; */
+  }
+  
+  .thread-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    align-items: center;
+  }
+  
+  .thread-item:last-child {
+    border-bottom: none;
+  }
+  
+  .thread-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .thread-title {
+    font-size: 1em;
+    font-weight: bold;
+    color: #e63946;
+    text-decoration: none;
+  }
+  
+  .thread-title:hover {
+    color: #0056b3;
+  }
+  
+  .thread-meta {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-top: 5px;
+  }
+  
+  .thread-stats {
+    flex: 1;
+    text-align: right;
+    font-size: 0.9em;
+    color: #495057;
+  }
+  
+  .last-reply {
+    flex: 1;
+    text-align: right;
+    font-size: 0.9em;
+    color: #495057;
+  }
+  
+  .replies,
+  .views {
+    display: block;
+  }
+  
+  .last-reply-date {
+    font-weight: bold;
+  }
+  
+  .last-reply-user {
+    color: #6c757d;
+    font-size: 0.9em;
+  }
+  
