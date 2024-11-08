@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import Logo from '../assets/Logo1.png';
@@ -15,13 +16,10 @@ const Header = () => {
       </Link>
 
       <nav className="menu">
-        <div className="reader-button">
-          <Link to="/" className="forum">Forums</Link>
-          <Link to="/topic" className="lastest">Topic</Link>
-        </div>
+
         <div className="auth-buttons">
-          <Link to="/login"><button>Log in</button></Link>
-          <Link to="/register"><button>Register</button></Link>
+          <Link to="/login"><Button variant='primary'>Log in</Button></Link>
+          <Link to="/register"><Button variant='primary'>Register</Button></Link>
         </div>
       </nav>
     </div>

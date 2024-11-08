@@ -1,4 +1,5 @@
 import React from 'react';
+import { Breadcrumb, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './HomeScreen.css';
 
@@ -23,8 +24,15 @@ const HomeScreen = () => {
 
   return (
     <div className="body">
+      <Breadcrumb>
+      <Row>
+      <Breadcrumb.Item><Link to="/" className="forum">Forums</Link></Breadcrumb.Item>
+      </Row>
+      <Breadcrumb.Item><Link to="/topic" className="lastest">Topic</Link></Breadcrumb.Item>
+
+      </Breadcrumb>
       <>
-      <h2>Thông báo</h2>
+      <h2>Thông báo</h2>  
       <div className="home_noti">
         {threads.map((thread) => (
           <div key={thread.id} className="thread-item">
