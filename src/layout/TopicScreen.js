@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Breadcrumb, Card, Col, Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Header from './Header';
 import './TopicScreen.css';
 
 const TopicScreen = () => {
-  const location = useLocation();
-  const breadcrumb = location.pathname === '/topic' ? 'Latests' : 'Forums';
-
   const topics = [
     { id: 1, title: 'Nội quy của diễn đàn & chi tiết từng mục', replies: 6, views: '70K', lastReply: 'May 27, 2022' },
     { id: 2, title: 'Không thảo luận được tại F17/F33?', replies: 0, views: '72K', lastReply: 'May 16, 2021' },
@@ -18,30 +17,40 @@ const TopicScreen = () => {
   ];
 
   return (
-    <div className="forum-container">
-      <div className="breadcrumbs">
-        <Link to="/">Forums</Link> &gt; <Link to={location.pathname}>{breadcrumb}</Link>
-      </div>
-      <h2>All Topics</h2>
-      <div className="table">
-        <div className="table-header">
-          <div className="column-title">Topic</div>
-          <div className="column-replies">Replies</div>
-          <div className="column-views">Views</div>
-          <div className="column-last-reply">Last Reply</div>
-        </div>
-        {topics.map(topic => (
-          <div className="table-row" key={topic.id}>
-            <div className="column-title">
-              <span className="icon">📌</span> <a href="#">{topic.title}</a>
-            </div>
-            <div className="column-replies">{topic.replies}</div>
-            <div className="column-views">{topic.views}</div>
-            <div className="column-last-reply">{topic.lastReply}</div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <>
+    <Header/>
+    <Container className="body my-5">
+      <Breadcrumb className="custom-breadcrumb">
+        <Breadcrumb.Item href="/">Forums</Breadcrumb.Item>
+        <Breadcrumb.Item active>Topic</Breadcrumb.Item>
+      </Breadcrumb>
+
+      <h2 className="mb-4 text-black">All Topics</h2>
+      <Card className="shadow-sm">
+        <Card.Body>
+          <Row className="border-bottom pb-2 mb-3 text-muted">
+            <Col md={6}>Topic</Col>
+            <Col md={2} className="text-center">Replies</Col>
+            <Col md={2} className="text-center">Views</Col>
+            <Col md={2} className="text-center">Last Reply</Col>
+          </Row>
+          
+          {topics.map(topic => (
+            <Row key={topic.id} className="align-items-center py-3 border-bottom">
+              <Col md={6}>
+                <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark">
+                  📌 {topic.title}
+                </Link>
+              </Col>
+              <Col md={2} className="text-center">{topic.replies}</Col>
+              <Col md={2} className="text-center">{topic.views}</Col>
+              <Col md={2} className="text-center text-muted">{topic.lastReply}</Col>
+            </Row>
+          ))}
+        </Card.Body>
+      </Card>
+    </Container>
+    </>
   );
 };
 

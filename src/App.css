@@ -1,12 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+:root{
+    --primary-font : "Poppins", sans-serif;
+    --header-color : #cfc4d0;
+    --background-color: #f0f0f0;
+    --button-color : #AD49E1;
+    --header-color : #EBD3F8;
+    --threads-container-color : #f9f9f9;
+    --logo-color : #5a4da5;
+    --thread-text-color : #333;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
 body{
-    font-family: 'Times New Roman', Times, serif;
-    background-color: #2e333a;
+    font-family: var(--primary-font);
+    background-color: var(--background-color);
     font-weight: bold;
-    /* display: flex; */
-    align-items: center;
 }
 
 .App{
     width: 100%;
     height: 100%;
+}
+
+.shadowlv{
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+}
+.rounded-button{
+    border-radius: 10px;
+    background-color: var(--button-color);
+}
+.rounded-button:hover {
+    background-color: black;
+    color: white 
+  }
+
+a{
+    text-decoration: none;
+}
+
+.custom-breadcrumb .breadcrumb-item {
+    font-size: 1.6em;
+    color: rgb(246, 97, 246);
+    margin: 0 5px 18px 0;
+  }
+  
+.custom-breadcrumb .breadcrumb-item.active {
+    color: rgb(246, 97, 246); /* Set a different color for the active item */
+  }
+
+.thread{
+  max-width: 100%;
+  color: var(--thread-text-color);
 }
