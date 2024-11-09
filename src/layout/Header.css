@@ -60,13 +60,13 @@
 }
 
 .search-container {
-  position: relative; /* To position the icon within the search bar */
-  width: 20rem; /* Initial container width matching the search bar */
-  transition: width 0.3s ease; /* Smooth animation on container width */
+  position: relative; 
+  width: 20rem; 
+  transition: width 0.3s ease; 
 }
 
 #searchbar {
-  width: 100%; /* Full width of container */
+  width: 100%; 
   height: 3em;
   border-radius: 28px;
   border: solid transparent 1px;
@@ -88,7 +88,7 @@
 
 .searchbar_icon {
   position: absolute;
-  right: 15px; /* Position inside the expanding container */
+  right: 15px; 
   top: 50%;
   transform: translateY(-50%);
   color: #5a4da5;

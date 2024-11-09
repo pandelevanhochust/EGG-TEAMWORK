@@ -21,7 +21,6 @@ const Header = () => {
       <Navbar className="navbar_header" sticky="top" style={{ width: '100%' }}>
         <Container expand="lg" fluid className="d-flex justify-content-between align-items-center py-4">
           
-          {/* Logo Section */}
           <Navbar.Brand as={Link} to="/" className="d-flex align-items-center egglogo ms-5">
             <img src={Logo} alt="Logo" className="logo-img" />
             <span className="ms-2" style={{ color: '#5a4da5', fontWeight: 'bold', fontSize: '1.5rem' }}>EGG FORUM</span>

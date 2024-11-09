@@ -1,4 +1,3 @@
-/* Main container styling */
 .body {
   max-width: 80%;
   margin: auto;
@@ -10,42 +9,37 @@
   background-color: var(--threads-container-color);
 }
 
-/* Heading styling */
 .body h2 {
   font-size: 1.5em;
-  color: #000; /* Black color for headings */
+  color: #000; 
   margin-bottom: 20px;
 }
 
-/* Thread item styling */
 .thread-item {
   align-items: center;
-  color: #333; /* Text color */
+  color: #333; 
 }
 
-/* Link styling for thread titles */
 .thread-title {
-  color: #d9534f; /* Original text-danger color */
+  color: #d9534f; 
   transition: color 0.3s ease;
 }
 
 .thread-title:hover {
-  color: #0056b3; /* Darker blue on hover */
+  color: #0056b3; 
 }
 
-/* Replies and views section */
 .replies,
 .views {
   display: block;
   color: #555;
 }
 
-/* Last reply date */
 .last-reply-date {
   font-weight: bold;
 }
 
 .body h2 {
-  color: black; /* Set h2 text to black */
+  color: black;
 }
 
