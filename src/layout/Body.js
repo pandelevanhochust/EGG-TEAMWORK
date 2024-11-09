@@ -37,7 +37,6 @@ const Body = () => {
   );
 };
 
-// Reusable Section component
 const Section = ({ title, data }) => (
   <section className="mb-5">
     <h2>{title}</h2>
