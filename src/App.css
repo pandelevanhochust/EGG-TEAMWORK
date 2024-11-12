@@ -42,6 +42,7 @@ body{
 .rounded-button{
     border-radius: 10px;
     background-color: var(--button-color);
+    border-color: var(--button-color);
 }
 .rounded-button:hover {
     background-color: black;

@@ -99,3 +99,12 @@
   background-color: var(--button-color);
   color: var(--button-color);
 }
+
+.navbar-toggler {
+  border: none;; /* Remove border from the toggle button */
+}
+
+.navbar-collapse {
+  /* float: inline-end; */
+}
+
