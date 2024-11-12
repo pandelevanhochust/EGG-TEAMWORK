@@ -19,6 +19,7 @@ function App() {
         <Route path="/register" element={<RegisterScreen/>} />
         <Route path="/thread/:id" element={<PostScreen/>} />
         <Route path="/profile" element={<ProfileScreen/>} />
+        
       </Routes>
     </Router>
   );

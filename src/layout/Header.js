@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container, Dropdown, Form, FormControl, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button, Card, Container, Form, FormControl, Image, ListGroup, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { IoIosNotifications, IoIosSearch } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
@@ -10,6 +10,9 @@ import './Header.css';
 const Header = () => {
   const [userState, setUserState] = useState(true);
   const [Search_key, setSearch_key] = useState('');
+  const [Notification,setNotification] = useState(false);
+
+  const notifications = ["Notification 1","Notification 2","Notification 3"];
   
   const navigate = useNavigate();
 
@@ -71,13 +74,58 @@ const Logout = () => {
                   </Button>
                 </Link>
 
-                {/* <Button variant="primary" className="p-3 rounded-button shadow d-flex align-items-center justify-content-center">
+                <Button variant="primary" 
+                        className="p-3 rounded-button shadow d-flex align-items-center justify-content-center"
+                        onClick={() => setNotification(!Notification)}>
                   <IoIosNotifications style={{ width: '23px', height: '23px' }} />
-                </Button> */}
+                </Button>
 
-<Dropdown align="end">
+                {Notification && (
+                <Card
+                  className="position-absolute"
+                  style={{
+                    top: '105px',
+                    right: '100px',
+                    width: '200px',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                    zIndex: '5',
+                  }}
+                >
+                  <Card.Header className="text-center">Notifications</Card.Header>
+                <ListGroup
+                    variant="flush"
+                    className="scrollable-list"
+                    style={{
+                      maxHeight: '150px',
+                      overflowY: 'auto',
+                    }}
+                  >
+                    {notifications.length > 0 ? (
+                      notifications.map((notification, index) => (
+                        <ListGroup.Item key={index} className="py-2 px-3 text-center">
+                          <Link to="" style={{ textDecoration: 'none', color: '#333' }}>
+                            {notification}
+                          </Link>
+                        </ListGroup.Item>
+                      ))
+                    ) : (
+                      <ListGroup.Item className="text-center text-muted py-2">
+                        No notifications
+                      </ListGroup.Item>
+                    )}
+                  </ListGroup>
+                  <Card.Footer className="text-center">
+                    <Link to="/notification" style={{ textDecoration: 'none', color: '#AD49E1' }}>
+                      View All
+                    </Link>
+                  </Card.Footer>
+                </Card>
+              )}  
+                
+              
+
+              {/* <Dropdown align="end">
                   <Dropdown.Toggle
-                    as={Button}
                     variant="primary"
                     className="p-3 rounded-button shadow d-flex align-items-center justify-content-center"
                   >
@@ -92,7 +140,9 @@ const Logout = () => {
                     <Dropdown.Divider />
                     <Dropdown.Item as={Link} to="/notifications">View All</Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>
+              </Dropdown> */}
+
+
 
                 <NavDropdown 
                   title={
