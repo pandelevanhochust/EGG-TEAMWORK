@@ -1,9 +1,9 @@
-.header {
+/* .header {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 20px;
-}
+  padding: 15px;
+} */
 
 
 .navbar_header{
@@ -54,7 +54,7 @@
   color: white 
 }
 
-.search-wrapper {
+/* .search-wrapper {
   position: relative;
   width: 100%;
 }
@@ -71,29 +71,29 @@
   border-radius: 28px;
   border: solid transparent 1px;
   padding: 10px;
-  padding-right: 40px; /* Space for the icon */
+  padding-right: 40px; 
   box-sizing: border-box;
-  transition: width 0.3s ease, border 0.3s ease; /* Smooth animation */
+  transition: width 0.3s ease, border 0.3s ease; 
 }
 
 .search-container:hover,
 .search-container:focus-within {
-  width: 30rem; /* Expanded container width */
+  width: 30rem; 
 }
 
 #searchbar:hover,
 #searchbar:focus {
-  border: solid #5a4da5 1px; /* Color change on hover/focus */
-}
+  border: solid #5a4da5 1px; 
+} */
 
-.searchbar_icon {
+/* .searchbar_icon {
   position: absolute;
   right: 15px; 
   top: 50%;
   transform: translateY(-50%);
   color: #5a4da5;
-  pointer-events: none; /* Icon does not block input focus */
-}
+  pointer-events: none;
+} */
 
 .rounded-circle{
   background-color: var(--button-color);
@@ -104,7 +104,24 @@
   border: none;; /* Remove border from the toggle button */
 }
 
-.navbar-collapse {
-  /* float: inline-end; */
+/* .search-wrapper {
+  overflow: hidden;
 }
+
+.search-input {
+  transition: width 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+}
+
+.search-wrapper:hover .search-input,
+.search-input:focus {
+  width: 120%;
+
+}
+
+.searchbar_icon {
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+} */
 

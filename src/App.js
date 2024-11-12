@@ -4,10 +4,11 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import HomeScreen from './layout/HomeScreen';
 import LoginScreen from './layout/LoginScreen';
-import PostScreen from './layout/PostScreen';
-import ProfileScreen from './layout/ProfileScreen';
+import PostScreen from './layout/PostScreen/PostScreen';
+import ProfileScreen from './layout/ProfileScreen/ProfileScreen';
 import RegisterScreen from './layout/RegisterScreen';
-import TopicScreen from './layout/TopicScreen';
+import TopicScreen from './layout/TopicScreen/TopicScreen';
+import WritingScreen from './layout/WritingScreen/WritingScreen';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/register" element={<RegisterScreen/>} />
         <Route path="/thread/:id" element={<PostScreen/>} />
         <Route path="/profile" element={<ProfileScreen/>} />
-        
+        <Route path="/writing" element={<WritingScreen/>}/>
       </Routes>
     </Router>
   );

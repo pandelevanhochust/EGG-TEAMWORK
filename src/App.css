@@ -64,7 +64,11 @@ a{
   }
 
 .thread{
-  max-width: 100%;
+  margin: auto;
+  /* display: flex; */
+  /* align-items: center; */
+  /* flex-direction: column; */
+  max-width: 90%;
   color: var(--thread-text-color);
 }
 

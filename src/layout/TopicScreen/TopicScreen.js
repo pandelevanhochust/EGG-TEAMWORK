@@ -1,7 +1,7 @@
 import React from 'react';
 import { Breadcrumb, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Header from './Header';
+import Header from '../Header';
 import './TopicScreen.css';
 
 const TopicScreen = () => {

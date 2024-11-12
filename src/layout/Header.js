@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Container, Form, FormControl, Image, ListGroup, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button, Card, Container, FormControl, Image, ListGroup, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { IoIosNotifications, IoIosSearch } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
@@ -10,10 +10,11 @@ import './Header.css';
 const Header = () => {
   const [userState, setUserState] = useState(true);
   const [Search_key, setSearch_key] = useState('');
-  const [Notification,setNotification] = useState(false);
+  const [Notification, setNotification] = useState(false);
+  const [searchExpanded, setSearchExpanded] = useState(false);
 
-  const notifications = ["Notification 1","Notification 2","Notification 3"];
-  
+  const notifications = ["Notification 1", "Notification 2", "Notification 3"];
+
   const navigate = useNavigate();
 
   const SearchHandler = (e) => {
@@ -22,50 +23,72 @@ const Header = () => {
     }
   };
 
-const Logout = () => {
-  setUserState(false);
-  navigate("/");
-}
+  const Logout = () => {
+    setUserState(false);
+    navigate("/");
+  };
 
   return (
     <header>
       <Navbar className="navbar_header" sticky="top" expand="lg" style={{ width: '100%' }}>
-        <Container fluid className="py-4">
-          
-          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center egglogo">
-            <Image 
-              src={Logo} 
-              alt="Logo" 
-              rounded 
+        <Container fluid className="py-2 d-flex align-items-center justify-content-between">
+          {/* Logo */}
+          <Navbar.Brand href="/" className="d-flex align-items-center egglogo p-3">
+            <Image
+              src={Logo}
+              alt="Logo"
+              rounded
               fluid
               style={{ width: '50px', height: '50px' }}
             />
             <span className="ms-2" style={{ color: '#5a4da5', fontWeight: 'bold', fontSize: '1.5rem' }}>EGG FORUM</span>
           </Navbar.Brand>
-          
-          <Navbar.Toggle aria-controls="navbar-content" />
 
-          <Navbar.Collapse id="navbar-content" className="d-flex gap-3 flex-row navbar-collapse align-items-end text-end ms-auto ">
-            <Form className="search-container d-flex justify-content-center mx-auto my-3 my-lg-0 d-none d-md-block" style={{ width: '40%' }}>
-              <div className="search-wrapper">
+          <div
+              className={`search-container d-flex align-items-center position-relative ${
+                searchExpanded ? 'expanded' : ''
+              }`}
+              style={{
+                transition: 'all 0.3s ease',
+                width: searchExpanded ? '300px' : '50px',
+                backgroundColor: '#f8f9fa',
+                borderRadius: '30px',
+              }}
+            >
+              <Button
+                variant="light"
+                className="d-flex align-items-center justify-content-center p-2"
+                style={{ borderRadius: '50%', width: '40px', height: '40px' }}
+                onClick={() => setSearchExpanded(true)}
+              >
+                <IoIosSearch style={{ fontSize: '1.5rem', color: '#5a4da5' }} />
+              </Button>
+
+              {searchExpanded && (
                 <FormControl
                   id="searchbar"
                   type="search"
                   placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
+                  className="ps-4 py-2 search-input"
+                  style={{
+                    borderRadius: '30px',
+                    border: 'none',
+                    outline: 'none',
+                    fontSize: '1rem',
+                    background: 'transparent',
+                    color: '#000',
+                  }}
                   value={Search_key}
                   onChange={(e) => setSearch_key(e.target.value)}
-                  onSubmit={SearchHandler}
+                  onKeyDown={SearchHandler}
+                  autoFocus
                 />
-                <IoIosSearch className="searchbar_icon" />
-              </div>
-            </Form>
+              )}
+            </div>
+              
+          <Navbar.Toggle aria-controls="navbar-content" />
 
-            {/* <Button variant="primary" className="p-3 rounded-button shadow d-flex align-items-center justify-content-center">
-            <IoIosSearch className="searchbar_icon d-md-none" style={{ width: '23px', height: '23px' }} />
-            </Button> */}
-
+          <Navbar.Collapse id="navbar-content" className="d-lg-flex justify-content-end">
             {userState && (
               <Nav className="d-flex flex-row align-items-center gap-3 auth-buttons">
                 <Link to="/writing">
@@ -121,41 +144,18 @@ const Logout = () => {
                   </Card.Footer>
                 </Card>
               )}  
-                
-              
 
-              {/* <Dropdown align="end">
-                  <Dropdown.Toggle
-                    variant="primary"
-                    className="p-3 rounded-button shadow d-flex align-items-center justify-content-center"
-                  >
-                    <IoIosNotifications style={{ width: '23px', height: '23px' }} />
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu style={{ minWidth: '300px' }}>
-                    <Dropdown.Header>Notifications</Dropdown.Header>
-                    <Dropdown.Item>Notification 1</Dropdown.Item>
-                    <Dropdown.Item>Notification 2</Dropdown.Item>
-                    <Dropdown.Item>Notification 3</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item as={Link} to="/notifications">View All</Dropdown.Item>
-                  </Dropdown.Menu>
-              </Dropdown> */}
-
-
-
-                <NavDropdown 
+                <NavDropdown
                   title={
-                    <Image 
-                      src={AvatarImg} 
-                      alt="User Avatar" 
-                      rounded 
-                      fluid 
-                      style={{ width: '55px', height: '55px', boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.2)' }} 
-                      className=""
+                    <Image
+                      src={AvatarImg}
+                      alt="User Avatar"
+                      rounded
+                      fluid
+                      style={{ width: '55px', height: '55px', boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.2)' }}
                     />
-                  } 
-                  id="avatar-dropdown" 
+                  }
+                  id="avatar-dropdown"
                 >
                   <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="/settings">Settings</NavDropdown.Item>
@@ -165,7 +165,6 @@ const Logout = () => {
               </Nav>
             )}
 
-            {/* Buttons for Unauthenticated Users */}
             {!userState && (
               <Nav className="d-flex flex-row align-items-center gap-3 auth-buttons">
                 <Link to="/login">

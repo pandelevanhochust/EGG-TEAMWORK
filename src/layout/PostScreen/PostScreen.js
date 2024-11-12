@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Breadcrumb, Button, Card, Container, Form, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import Header from './Header';
+import Header from '../Header';
 
 const posts = [
   { id: 1, title: "Nội quy của diễn đàn & chi tiết từng mục", author: "fRzzy", date: "Mar 12, 2020", content: "This is the content of the post." },
@@ -37,7 +37,7 @@ const PostScreen = () => {
         <Breadcrumb.Item active>{post.title}</Breadcrumb.Item>
       </Breadcrumb>
 
-      <Card className="p-4 shadow-sm thread">
+      <Card className="p-4 shadow-sm thread m-auto">
         <Card.Body>
           <h1>{post.title}</h1>
           <p className="text-muted">
@@ -51,7 +51,7 @@ const PostScreen = () => {
         </Card.Body>
       </Card>
 
-      <Card className="p-4 shadow-sm thread my-3">
+      <Card className="p-4 shadow-sm thread my-3 m-auto">
         <h2>Comments</h2>
       <ListGroup variant='flush' className="comment-section mt-2">
         {comments.map((comment,index) => (
