@@ -66,3 +66,12 @@ a{
   max-width: 100%;
   color: var(--thread-text-color);
 }
+
+.comment{
+  font-weight:  600;
+  font-size: 1.2rem
+}
+
+.comment p{
+  font-size: 1rem;
+}

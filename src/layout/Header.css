@@ -94,3 +94,8 @@
   color: #5a4da5;
   pointer-events: none; /* Icon does not block input focus */
 }
+
+.rounded-circle{
+  background-color: var(--button-color);
+  color: var(--button-color);
+}

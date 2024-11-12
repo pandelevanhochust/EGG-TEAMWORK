@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Logo from '../assets/Logo1.png';
 import './RegisterScreen.css';
 
@@ -164,11 +165,11 @@ const RegisterScreen = () => {
               />
             </Form.Group>
 
-          {/* <Link href="/"> */}
+          <Link href="/">
             <Button variant="primary" type="submit" className="w-100 mt-3 rounded-button">
               Register
             </Button>
-          {/* </Link> */}
+          </Link>
 
           </Form>
         </Card.Body>
