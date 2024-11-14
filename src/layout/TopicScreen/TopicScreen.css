@@ -1,34 +1,50 @@
-.topic_screen{
-    max-width: 80%;
-    margin: auto;
-    padding: 20px;
-    background-color: #f9f9f9; 
-    color: #333; 
-    border-radius: 8px;
-    width: 100%;
+.topic_screen {
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+  border-radius: 8px;
 }
 
+/* Table header and rows */
 .table-header, .table-row {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-  }
-  
-  .table-header {
-    font-weight: bold;
-    color: #5a5a5a;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .table-row:hover {
-    background-color: #f8f9fa; /* Light hover effect */
-  }
-  
-  .text-black {
-    color: black !important;
-  }
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
 
-  h2{
-    font-size: 1.5em;
-  }
-  
+.table-header {
+  font-weight: bold;
+  color: #5a5a5a;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-row:hover {
+  background-color: #f8f9fa;
+}
+
+/* Specific styles for important topics */
+.text-black {
+  color: black !important;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+.less-important-topic .table-row {
+  font-size: 0.85em; 
+}
+
+.less-important-topic h4 {
+  font-size: 1.25em;
+}
+
+.less-important-topic .text-muted.small {
+  font-size: 0.75em;
+}
+
+.less-important-topic .text-center .small {
+  font-size: 1em;
+}
