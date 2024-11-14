@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Container, FormControl, Image, ListGroup, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { IoIosNotifications, IoIosSearch } from "react-icons/io";
@@ -27,7 +27,21 @@ const Header = () => {
     setUserState(false);
     navigate("/");
   };
-
+  
+    useEffect(() => {
+      let timeout;
+      if (searchExpanded && Search_key === '') {
+        // Set a timer to minimize the search bar after 3 seconds
+        timeout = setTimeout(() => {
+          setSearchExpanded(false);
+        }, 3000); // 3000ms = 3 seconds
+      }
+  
+      return () => {
+        clearTimeout(timeout); // Clear the timeout if the component unmounts or if `searchExpanded` changes
+      };
+    }, [searchExpanded, Search_key]);
+  
   return (
     <header>
       <Navbar className="navbar_header" sticky="top" expand="lg" style={{ width: '100%' }}>
@@ -45,46 +59,46 @@ const Header = () => {
           </Navbar.Brand>
 
           <div
-              className={`search-container d-flex align-items-center position-relative ${
-                searchExpanded ? 'expanded' : ''
-              }`}
-              style={{
-                transition: 'all 0.3s ease',
-                width: searchExpanded ? '300px' : '50px',
-                backgroundColor: '#f8f9fa',
-                borderRadius: '30px',
-              }}
+            className={`search-container d-flex align-items-center position-relative ${
+              searchExpanded ? 'expanded' : ''
+            }`}
+            style={{
+              transition: 'all 0.3s ease',
+              width: searchExpanded ? '300px' : '50px',
+              backgroundColor: '#f8f9fa',
+              borderRadius: '30px',
+            }}
+          >
+            <Button
+              variant="light"
+              className="d-flex align-items-center justify-content-center p-2"
+              style={{ borderRadius: '50%', width: '40px', height: '40px' }}
+              onClick={() => setSearchExpanded(true)}
             >
-              <Button
-                variant="light"
-                className="d-flex align-items-center justify-content-center p-2"
-                style={{ borderRadius: '50%', width: '40px', height: '40px' }}
-                onClick={() => setSearchExpanded(true)}
-              >
-                <IoIosSearch style={{ fontSize: '1.5rem', color: '#5a4da5' }} />
-              </Button>
+              <IoIosSearch style={{ fontSize: '1.5rem', color: '#5a4da5' }} />
+            </Button>
 
-              {searchExpanded && (
-                <FormControl
-                  id="searchbar"
-                  type="search"
-                  placeholder="Search"
-                  className="ps-4 py-2 search-input"
-                  style={{
-                    borderRadius: '30px',
-                    border: 'none',
-                    outline: 'none',
-                    fontSize: '1rem',
-                    background: 'transparent',
-                    color: '#000',
-                  }}
-                  value={Search_key}
-                  onChange={(e) => setSearch_key(e.target.value)}
-                  onKeyDown={SearchHandler}
-                  autoFocus
-                />
-              )}
-            </div>
+            {searchExpanded && (
+              <FormControl
+                id="searchbar"
+                type="search"
+                placeholder="Search"
+                className="ps-4 py-2 search-input"
+                style={{
+                  borderRadius: '30px',
+                  border: 'none',
+                  outline: 'none',
+                  fontSize: '1rem',
+                  background: 'transparent',
+                  color: '#000',
+                }}
+                value={Search_key}
+                onChange={(e) => setSearch_key(e.target.value)}
+                onKeyDown={SearchHandler}
+                autoFocus
+              />
+            )}
+          </div>
               
           <Navbar.Toggle aria-controls="navbar-content" />
 

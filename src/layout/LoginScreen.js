@@ -35,14 +35,28 @@ const LoginScreen = () => {
             <Button variant="primary" type="submit" className="w-100 mt-3 rounded-button">
               Login
             </Button>
-
+            
+            {/* <div className="d-flex align-items-center gap-5 justify-content-center mt-3 ms-auto">
+            <Row>
+            <Button
+              variant="secondary"
+              className="w-100 mt-2 rounded-button"
+              onClick={() => navigate('/register')}
+            >
+              I already have account 
+            </Button>
+            </Row>
+            <Row>
             <Button
               variant="secondary"
               className="w-100 mt-2 rounded-button"
               onClick={() => navigate('/')}
             >
-              Trở về trang chủ
+              Return
             </Button>
+            </Row>
+            </div> */}
+            
           </Form>
         </Card.Body>
       </Card>
