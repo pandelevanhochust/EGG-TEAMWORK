@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/Logo1.png';
 import './RegisterScreen.css';
-
 
 const RegisterScreen = () => {
   const [Membership, setMembership] = useState(false);
   const gen = [1, 2, 3, 4, 5, 6, 7, 8];
-  
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
   const [email, setEmail] = useState('');
@@ -17,25 +15,22 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState('');
   const [confirmpw, setConfirmpw] = useState('');
   const [generation, setGen] = useState('');
-
-  // const navigate = useNavigate();
-
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-  //   if(password !== confirmpw){
-  //     alert("Passwords mismatch");
-  //   }else{
-  //     navigate("/");
-  //   }
-  // };
+  
+  const navigate = useNavigate();
 
   return (
     <Container fluid className="register-screen d-flex justify-content-center align-items-center mt-4">
       <Card className="register-container shadow-sm p-4">
         <Card.Body>
           <Row className="text-center my-4 d-flex justify-content-center align-items-center ">
-          <img src={Logo} alt="Logo" className="logo-img" />
-          <h2 className="text-center my-1" >Register</h2>
+            <img
+              src={Logo}
+              alt="Logo"
+              className="logo-img"
+              onClick={() => navigate('/')}
+              style={{ cursor: 'pointer' }}
+            />
+            <h2 className="text-center my-1">Register</h2>
           </Row>
           <Form>
             <Row>
@@ -165,12 +160,17 @@ const RegisterScreen = () => {
               />
             </Form.Group>
 
-          <Link href="/">
             <Button variant="primary" type="submit" className="w-100 mt-3 rounded-button">
               Register
             </Button>
-          </Link>
 
+            <Button
+              variant="secondary"
+              className="w-100 mt-2 rounded-button"
+              onClick={() => navigate('/')}
+            >
+              Trở về trang chủ
+            </Button>
           </Form>
         </Card.Body>
       </Card>
