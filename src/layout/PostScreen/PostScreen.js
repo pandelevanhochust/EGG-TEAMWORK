@@ -47,10 +47,10 @@ const PostScreen = () => {
               <Card.Body>
                 {/* Thêm Badge "Announcement" */}
                 <Badge bg="warning" className="mb-2">Announcement</Badge>
-                <h1>{featuredPost.title}</h1>
-                <p className="text-muted">by {featuredPost.author} • {featuredPost.date}</p>
+                <h1 className="text-center fs-4">{featuredPost.title}</h1> {/* Căn giữa tiêu đề và giảm kích thước */}
+                <p className="text-muted text-center small">by {featuredPost.author} • {featuredPost.date}</p> {/* Giảm kích thước chữ thông tin tác giả */}
                 <hr />
-                <p>{featuredPost.content}</p>
+                <p className="small">{featuredPost.content}</p> {/* Giảm kích thước chữ nội dung bài viết */}
               </Card.Body>
             </Card>
           </Col>
@@ -60,9 +60,9 @@ const PostScreen = () => {
             {otherPosts.map((otherPost) => (
               <Card key={otherPost.id} className="p-3 shadow-sm thread mb-4">
                 <Card.Body>
-                  <h4>{otherPost.title}</h4>
-                  <p className="text-muted">by {otherPost.author} • {otherPost.date}</p>
-                  <p>{otherPost.content}</p>
+                  <h4 className="text-center fs-5">{otherPost.title}</h4> {/* Giảm kích thước tiêu đề bài viết */}
+                  <p className="text-muted text-center small">by {otherPost.author} • {otherPost.date}</p> {/* Giảm kích thước chữ thông tin tác giả */}
+                  <p className="small">{otherPost.content}</p> {/* Giảm kích thước chữ nội dung bài viết */}
                 </Card.Body>
               </Card>
             ))}
@@ -70,13 +70,13 @@ const PostScreen = () => {
         </Row>
 
         <Card className="p-4 shadow-sm thread my-3 m-auto">
-          <h2>Comments</h2>
+          <h2 className="fs-4">Comments</h2> {/* Giảm kích thước tiêu đề phần bình luận */}
           <ListGroup variant='flush' className="comment-section mt-2">
             {comments.map((comment, index) => (
               <Card className="comment my-2" key={index}>
                 <ListGroupItem>
-                  <p>{comment.username} {comment.date}</p>
-                  {comment.comment}
+                  <p><strong>{comment.username}</strong> <span className="text-muted small">{comment.date}</span></p> {/* Giảm kích thước chữ ngày tháng */}
+                  <p className="small">{comment.comment}</p> {/* Giảm kích thước chữ bình luận */}
                 </ListGroupItem>
               </Card>
             ))}
