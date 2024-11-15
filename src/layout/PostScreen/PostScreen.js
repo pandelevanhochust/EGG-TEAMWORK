@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Badge, Breadcrumb, Card, Col, Container, Form, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import { Breadcrumb, Card, Col, Container, Form, ListGroup, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import Header from '../Header';
 
@@ -80,51 +80,58 @@ const PostScreen = () => {
 
         <Row>
           {/* Cột trái lớn hơn cho bài viết nổi bật */}
-          <Col md={8}>
-            <Card className="p-4 shadow-sm thread m-auto mb-4">
+          <Col md={9}>
+            <Card className="p-3 shadow-sm thread m-auto mb-4 post">
               <Card.Body>
-                <h1 className="text-center fs-4">{post.title}</h1> {/* Căn giữa tiêu đề và giảm kích thước */}
-                <p className="text-muted text-center small" >by {post.author} • {post.date}</p> {/* Giảm kích thước chữ thông tin tác giả */}
+                <h1 className="text-right fs-1">{post.title}</h1> {/* Căn giữa tiêu đề và giảm kích thước */}
+                <p className="text-muted text-right small mb-4" >by {post.author} • {post.date}</p> {/* Giảm kích thước chữ thông tin tác giả */}
                 <hr />
-                <p className="small">{post.content}</p> {/* Giảm kích thước chữ nội dung bài viết */}
+                <p className="medium fs-5 mt-4">{post.content}</p> {/* Giảm kích thước chữ nội dung bài viết */}
               </Card.Body>
             </Card>
           </Col>
 
-          {/* Cột phải nhỏ hơn cho các bài viết còn lại */}
-          <Col md={4}>
-            <Card className="shadow-sm mb-2 text-aligh-center">
-              <Card.Header style={{ backgroundColor: '#EBD3F8' }}>
-                <h2 className="fs-4">Comments</h2> {/* Giảm kích thước tiêu đề phần bình luận */}
-              </Card.Header>
-              <Card.Body>
-                <ListGroup variant='flush' className="comment-section mt-2">
-                  {comments.map((comment, index) => (
-                    <Card className="comment my-2" key={index}>
-                      <ListGroupItem>
-                        <p><strong>{comment.username}</strong> <span className="text-muted small">{comment.date}</span></p> {/* Giảm kích thước chữ ngày tháng */}
-                        <p className="small">{comment.comment}</p> {/* Giảm kích thước chữ bình luận */}
-                      </ListGroupItem>
-                    </Card>
-                  ))}
-                  <Card className="comment my-2">
-                    <ListGroupItem>
-                      <Form.Group className="my-3" controlId="comment">
-                        <Form.Label>Your Comment</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Leave your comment here"
-                          value={user_comment}
-                          required
-                          className="py-4 mt-2"
-                          onChange={(e) => setUser_comment(e.target.value)}
-                        />
-                      </Form.Group>
-                    </ListGroupItem>
-                  </Card>
-                </ListGroup>
-              </Card.Body>
-            </Card>
+
+          <Col md={3}>
+          <Card className="shadow-sm mb-2 text-align-center">
+            <Card.Header style={{ backgroundColor: '#EBD3F8' }}>
+              <h2 className="fs-3 py-2 ms-2">Comments</h2>
+            </Card.Header>
+            <Card.Body>
+              <ListGroup variant="flush" className="comment-section mt-2">
+                {comments.map((comment, index) => (
+                  <Row
+                    key={index}
+                    className="align-items-center py-1 border-bottom"
+                    style={{ fontWeight: "normal" }}
+                  >
+                    <Col>
+                      <p>
+                        <strong>{comment.username}</strong>{" "}
+                        <span className="text-muted small m-1">{comment.date}</span>
+                      </p>
+                      <p className="small">{comment.comment}</p>
+                    </Col>
+                  </Row>
+                ))}
+                <Row className="align-items-center py-3">
+                  <Col>
+                    <Form.Group className="my-3" controlId="comment">
+                      <Form.Label>Your Comment</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Leave your comment here"
+                        value={user_comment}
+                        required
+                        className="py-3 mt-2"
+                        onChange={(e) => setUser_comment(e.target.value)}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+              </ListGroup>
+            </Card.Body>
+          </Card>
           </Col>
         </Row>
 

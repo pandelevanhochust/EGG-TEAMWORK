@@ -73,7 +73,7 @@ const TopicScreen = () => {
                 {importantTopics.map(topic => (
                   <Row key={topic.id} className="align-items-center py-3 border-bottom">
                     <Col>
-                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title" style={{ fontWeight: 'normal'}}>
+                      <Link to={`/thread/${topic.id}`} className="text-decoration-none text-dark topic-title" style={{ fontWeight: 'normal'}}>
                         📌 {topic.title}
                       </Link>
                       <div className="text-muted small" style={{ fontWeight: 'normal'}}>Posted by {topic.author}</div>
