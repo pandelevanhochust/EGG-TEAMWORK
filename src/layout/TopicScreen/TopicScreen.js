@@ -16,9 +16,10 @@ const TopicScreen = () => {
     { id: 8, title: 'Tạm cấm tất cả các thread có nội dung “bóc phốt” hay tương tự', replies: 0, views: '21K', lastReply: 'Dec 27, 2021', author: 'Admin' }
   ];
 
-  // Sort important topics by the highest number of replies or views
-  const importantTopics = topics.filter(topic => topic.replies >= 4); // For example, topics with 4 or more replies
-  const lessImportantTopics = topics.filter(topic => topic.replies < 4); // Topics with fewer replies
+  const sortedTopics = [...topics].sort((a, b) => new Date(b.lastReply) - new Date(a.lastReply));
+  
+  const importantTopics = sortedTopics.filter(topic => topic.replies >= 4);
+  const lessImportantTopics = sortedTopics.filter(topic => topic.replies < 4);
 
   return (
     <>
@@ -31,22 +32,23 @@ const TopicScreen = () => {
 
         <h2 className="mb-4 text-black">All Topics</h2>
         <Row>
-          {/* Large column for important topics */}
+          {/* Large column for less important topics */}
           <Col md={8}>
             <Card className="shadow-sm mb-4">
               <Card.Body>
-                <h4>Important Topics</h4>
-                <Row className="border-bottom pb-2 mb-3 text-muted">
-                  <Col md={6}>Topic</Col>
-                  <Col md={2} className="text-center">Replies</Col>
-                  <Col md={2} className="text-center">Views</Col>
-                  <Col md={2} className="text-center">Last Reply</Col>
+                <Row className="trending-section py-2">
+                  <h4 className='ms-3 fs-2'>Lastest</h4>
+                  <Row className=" pb-2 mb-3 ms-2 text-muted">
+                    <Col md={6}>Topic</Col>
+                    <Col md={2} className="text-center">Replies</Col>
+                    <Col md={2} className="text-center">Views</Col>
+                    <Col md={2} className="text-center">Last Reply</Col>
+                  </Row>
                 </Row>
-
-                {importantTopics.map(topic => (
-                  <Row key={topic.id} className="align-items-center py-3 border-bottom">
+                {lessImportantTopics.map(topic => (
+                  <Row key={topic.id} className="align-items-center  py-3 border-bottom">
                     <Col md={6}>
-                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark">
+                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title">
                         📌 {topic.title}
                       </Link>
                       <div className="text-muted small">Posted by {topic.author}</div>
@@ -56,33 +58,29 @@ const TopicScreen = () => {
                     <Col md={2} className="text-center text-muted">{topic.lastReply}</Col>
                   </Row>
                 ))}
+                
               </Card.Body>
             </Card>
           </Col>
 
-          {/* Small column for less important topics */}
+          {/* Small column for important topics */}
           <Col md={4}>
             <Card className="shadow-sm mb-4">
               <Card.Body>
-                <h4>Less Important Topics</h4>
-                <Row className="border-bottom pb-2 mb-3 text-muted">
-                  <Col md={6}>Topic</Col>
-                  <Col md={2} className="text-center">Replies</Col>
-                  <Col md={2} className="text-center">Views</Col>
-                  <Col md={2} className="text-center">Last Reply</Col>
+                <Row className="trending-section py-2">
+                  <h4 className='ms-3 fs-2'>Trending</h4>
+                  <Row className="pb-2 mb-3 text-muted ms-1">
+                    <Col md={8}>Topic</Col>
+                  </Row>
                 </Row>
-
-                {lessImportantTopics.map(topic => (
-                  <Row key={topic.id} className="align-items-center py-3 border-bottom">
-                    <Col md={6}>
-                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark">
+                {importantTopics.map(topic => (
+                  <Row key={topic.id} className="align-items-center  py-3 border-bottom">
+                    <Col md={11}>
+                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title">
                         📌 {topic.title}
                       </Link>
-                      <div className="text-muted small">Posted by {topic.author}</div>
+                      <div className="text-muted small ms-4">Posted by {topic.author}</div>
                     </Col>
-                    <Col md={2} className="text-center">{topic.replies}</Col>
-                    <Col md={2} className="text-center">{topic.views}</Col>
-                    <Col md={2} className="text-center text-muted">{topic.lastReply}</Col>
                   </Row>
                 ))}
               </Card.Body>
@@ -91,8 +89,9 @@ const TopicScreen = () => {
         </Row>
 
         <div className="mt-4 text-center">
-          <Button variant="primary">Create New Topic</Button>
+  <Button className="custom-btn">Create New Topic</Button>
         </div>
+
       </Container>
     </>
   );
