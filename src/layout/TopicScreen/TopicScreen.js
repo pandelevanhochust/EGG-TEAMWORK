@@ -16,8 +16,9 @@ const TopicScreen = () => {
     { id: 8, title: 'Tạm cấm tất cả các thread có nội dung “bóc phốt” hay tương tự', replies: 0, views: '21K', lastReply: 'Dec 27, 2021', author: 'Admin' }
   ];
 
-  const importantTopics = topics.filter(topic => topic.replies >= 4);
-  const lessImportantTopics = topics.filter(topic => topic.replies < 4);
+  // Sort important topics by the highest number of replies or views
+  const importantTopics = topics.filter(topic => topic.replies >= 4); // For example, topics with 4 or more replies
+  const lessImportantTopics = topics.filter(topic => topic.replies < 4); // Topics with fewer replies
 
   return (
     <>
@@ -61,27 +62,27 @@ const TopicScreen = () => {
 
           {/* Small column for less important topics */}
           <Col md={4}>
-            <Card className="shadow-sm mb-4 less-important-topic">
+            <Card className="shadow-sm mb-4">
               <Card.Body>
                 <h4>Less Important Topics</h4>
                 <Row className="border-bottom pb-2 mb-3 text-muted">
-                  <Col md={4}>Topic</Col>
-                  <Col md={3} className="text-center small">Replies</Col>
-                  <Col md={2} className="text-center small">Views</Col>
-                  <Col md={3} className="text-center small">Last Reply</Col>
+                  <Col md={6}>Topic</Col>
+                  <Col md={2} className="text-center">Replies</Col>
+                  <Col md={2} className="text-center">Views</Col>
+                  <Col md={2} className="text-center">Last Reply</Col>
                 </Row>
 
                 {lessImportantTopics.map(topic => (
                   <Row key={topic.id} className="align-items-center py-3 border-bottom">
-                    <Col md={5}>
-                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark text-center small">
+                    <Col md={6}>
+                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark">
                         📌 {topic.title}
                       </Link>
                       <div className="text-muted small">Posted by {topic.author}</div>
                     </Col>
-                    <Col md={2} className="text-center small">{topic.replies}</Col>
-                    <Col md={2} className="text-center small">{topic.views}</Col>
-                    <Col md={3} className="text-center text-muted small">{topic.lastReply}</Col>
+                    <Col md={2} className="text-center">{topic.replies}</Col>
+                    <Col md={2} className="text-center">{topic.views}</Col>
+                    <Col md={2} className="text-center text-muted">{topic.lastReply}</Col>
                   </Row>
                 ))}
               </Card.Body>
