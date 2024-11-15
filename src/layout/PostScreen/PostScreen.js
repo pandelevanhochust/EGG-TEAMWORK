@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Card, Container, Form, ListGroup, ListGroupItem, Row, Col, Badge } from 'react-bootstrap';
+import { Badge, Breadcrumb, Card, Col, Container, Form, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import Header from '../Header';
 

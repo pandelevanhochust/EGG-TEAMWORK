@@ -38,8 +38,8 @@
   .trending-section {
     background-color: #c676f4; 
   } */
-  /* Đổi font-family cho tất cả tiêu đề */
-.topic-title {
+
+  .topic-title {
   font-family: 'Roboto', sans-serif; /* Hoặc font bạn muốn */
   font-weight: bold;
   font-size: 1.25rem;
