@@ -65,9 +65,8 @@ const TopicScreen = () => {
           <Col md={4}>
             <Card className="shadow-sm mb-4">
               <Card.Header className="shadow-sm mb-2" style={{ backgroundColor: '#EBD3F8' }}>
-                <h4 className="ms-3 fs-1.5 mt-3">Trending</h4>
+                <h4 className="ms-3 fs-1.5 mt-3">Trending Thread</h4>
                 <Row className="pb-2 mb-3 text-muted ms-1">
-                  <Col>Topic</Col>
                 </Row>
               </Card.Header>
               <Card.Body>

@@ -49,9 +49,8 @@ const Body = () => {
           <section>
             <Card className="shadow-sm mb-4">
               <Card.Header className="shadow-sm" style={{ backgroundColor: '#EBD3F8' }}>
-                <h4 className="ms-3 fs-4 mt-3">Latest</h4> {/* Reduced font size */}
+                <h4 className="ms-3 fs-4 mt-3">Latest Thread</h4> {/* Reduced font size */}
                 <Row className="pb-2 mb-1 text-muted ms-1">
-                  <Col>Topic</Col>
                 </Row>
               </Card.Header>
               <Card.Body>
