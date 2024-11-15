@@ -12,3 +12,23 @@
 .login-container h2 {
   color: #333;
 }
+
+.back-button {
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover {
+  color: #007bff;
+  transform: translateX(-2px);
+  text-decoration: none;
+}
+
+.back-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
