@@ -29,22 +29,37 @@
   color: black !important;
 }
 
-h2 {
-  font-size: 1.5em;
+  h2{
+    font-size: 1.5em;
+  }
+  /* .lastest-section {
+    background-color: #b261e0; 
+  }
+  
+  .trending-section {
+    background-color: #c676f4; 
+  } */
+
+  .topic-title {
+  font-family: 'Roboto', sans-serif; /* Hoặc font bạn muốn */
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
-.less-important-topic .table-row {
-  font-size: 0.85em; 
+/* Đổi font cho tiêu đề phần Trending */
+.trending-section h4 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.custom-btn {
+  background-color: #6f42c1;  /* Màu tím chuẩn */
+  color: white;               /* Màu chữ trắng */
+  border: none;               /* Không có đường viền */
+  padding: 10px 20px;         /* Padding cho nút */
+  font-size: 16px;            /* Kích thước chữ */
+  border-radius: 5px;         /* Bo góc nút */
+  transition: background-color 0.3s ease;  /* Hiệu ứng chuyển màu khi hover */
 }
 
-.less-important-topic h4 {
-  font-size: 1.25em;
-}
-
-.less-important-topic .text-muted.small {
-  font-size: 0.75em;
-}
-
-.less-important-topic .text-center .small {
-  font-size: 1em;
+.custom-btn:hover {
+  background-color: #5a32a3;  /* Màu tím đậm hơn khi hover */
 }
