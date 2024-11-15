@@ -35,7 +35,7 @@ const TopicScreen = () => {
           <Col md={8}>
             <Card>
               <Card.Header className="shadow-sm mb-2" style={{ backgroundColor: '#EBD3F8' }}>
-                <h4 className="ms-3 fs-1.5 mt-3">Latest</h4>
+                <h4 className="ms-3 fs-2.5 mt-3">Latest</h4>
                 <Row className="pb-2 mb-3 ms-2 text-muted" style={{ fontWeight: 'normal'}}>
                   <Col md={6}>Topic</Col>
                   <Col md={2} className="text-center" >Replies</Col>
@@ -47,7 +47,7 @@ const TopicScreen = () => {
                 {lessImportantTopics.map(topic => (
                   <Row key={topic.id} className="align-items-center py-3 border-bottom">
                     <Col md={6}>
-                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title fs-1.6" style={{ fontWeight: 'normal'}}>
+                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title" style={{ fontWeight: 'normal'}}>
                         📌 {topic.title}
                       </Link>
                       <div className="text-muted small" style={{ fontWeight: 'normal'}}>Posted by {topic.author}</div>

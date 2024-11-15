@@ -42,7 +42,7 @@
   .topic-title {
   font-family: 'Roboto', sans-serif; /* Hoặc font bạn muốn */
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 /* Đổi font cho tiêu đề phần Trending */
@@ -60,8 +60,9 @@
 }
 
 .custom-btn:hover {
-  background-color: #a07ee1;  /* Màu tím đậm hơn khi hover */
+  background-color: #530bd9;  /* Màu tím đậm hơn khi hover */
 }
 .topic-title:hover {
-  color: #6f30e6;  /* Màu tím đậm hơn khi hover */
+  color: #6f30e6 !important;  /* Màu tím đậm hơn khi hover */
 }
+
