@@ -43,25 +43,26 @@ const Body = () => {
           <Section title="Dynamic Programming" data={dp} />
           <Section title="Graph" data={graph} />
         </Col>
+
+        {/* Latest Threads Section */}
         <Col md={4}>
           <section>
-            <h2>Latest</h2>
-            <Card className="shadowlv">
+            <Card className="shadow-sm mb-4">
+              <Card.Header className="shadow-sm" style={{ backgroundColor: '#EBD3F8' }}>
+                <h4 className="ms-3 fs-4 mt-3">Latest</h4> {/* Reduced font size */}
+                <Row className="pb-2 mb-1 text-muted ms-1">
+                  <Col>Topic</Col>
+                </Row>
+              </Card.Header>
               <Card.Body>
                 {latestThreads.map((thread) => (
-                  <Row key={thread.id} className="thread-item py-3 border-bottom">
-                    <Col md={8}>
-                      <Link to={`/thread/${thread.id}`} className="thread-title text-decoration-none text-danger">
-                        {thread.title}
+                  <Row key={thread.id} className="align-items-center py-3 border-bottom">
+                    <Col md={12}>
+                      <Link to={`/thread/${thread.id}`} className="fs-5 text-decoration-none text-dark topic-title" style={{ fontWeight: '400' }}>
+                        📌 {thread.title}
                       </Link>
-                      <div className="text-muted">
-                        <small>by {thread.author} • {thread.date}</small>
-                      </div>
-                    </Col>
-                    <Col md={4} className="text-md-right">
-                      <span className="last-reply-date font-weight-bold">{thread.lastReplyDate}</span>
-                      <div className="text-muted">
-                        <small>Last by {thread.lastReplyUser}</small>
+                      <div className="text-muted small mt-1 ms-auto">
+                        by {thread.author} • {thread.date} • Last by {thread.lastReplyUser}
                       </div>
                     </Col>
                   </Row>
@@ -70,8 +71,6 @@ const Body = () => {
             </Card>
           </section>
         </Col>
-
-        {/* Column for the other sections */}
       </Row>
     </Container>
   );
@@ -80,37 +79,26 @@ const Body = () => {
 const Section = ({ title, data }) => {
   return (
     <section className="mb-5">
-      <h2>{title}</h2>
-      <Row>
-        <Col md={12}>
-          <Card className="shadowlv">
-            <Card.Body>
-              {data.map((thread) => (
-                <Row key={thread.id} className="thread-item py-3 border-bottom">
-                  <Col md={6}>
-                    <Link to={`/thread/${thread.id}`} className="thread-title text-decoration-none text-danger">
-                      {thread.title}
-                    </Link>
-                    <div className="text-muted">
-                      <small>by {thread.author} • {thread.date}</small>
-                    </div>
-                  </Col>
-                  <Col md={3} className="text-md-right">
-                    <span className="replies d-block">Replies: {thread.replies}</span>
-                    <span className="views">Views: {thread.views}</span>
-                  </Col>
-                  <Col md={3} className="text-md-right">
-                    <span className="last-reply-date font-weight-bold">{thread.lastReplyDate}</span>
-                    <div className="text-muted">
-                      <small>Last by {thread.lastReplyUser}</small>
-                    </div>
-                  </Col>
-                </Row>
-              ))}
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+      <Card>
+        <Card.Header className="shadow-sm mb-2" style={{ backgroundColor: '#EBD3F8' }}>
+          <h4 className="ms-3 fs-4 mt-3">{title}</h4> {/* Reduced font size */}
+        </Card.Header>
+        <Card.Body>
+          {data.map((thread) => (
+            <Row key={thread.id} className="align-items-center py-3 border-bottom">
+              <Col md={6}>
+                <Link to={`/thread/${thread.id}`} className="text-decoration-none text-dark topic-title" style={{ fontWeight: '400' }}>
+                  📌 {thread.title}
+                </Link>
+                <div className="text-muted small">by {thread.author}</div>
+              </Col>
+              <Col md={2} className="text-center">{thread.replies}</Col>
+              <Col md={2} className="text-center">{thread.views}</Col>
+              <Col md={2} className="text-center text-muted">{thread.lastReplyDate}</Col>
+            </Row>
+          ))}
+        </Card.Body>
+      </Card>
     </section>
   );
 };

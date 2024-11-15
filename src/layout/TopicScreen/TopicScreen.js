@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumb, Card, Col, Container, Row, Button } from 'react-bootstrap';
+import { Breadcrumb, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Header from '../Header';
 import './TopicScreen.css';
@@ -17,7 +17,6 @@ const TopicScreen = () => {
   ];
 
   const sortedTopics = [...topics].sort((a, b) => new Date(b.lastReply) - new Date(a.lastReply));
-  
   const importantTopics = sortedTopics.filter(topic => topic.replies >= 4);
   const lessImportantTopics = sortedTopics.filter(topic => topic.replies < 4);
 
@@ -32,21 +31,21 @@ const TopicScreen = () => {
 
         <h2 className="mb-4 text-black">All Topics</h2>
         <Row>
-          {/* Large column for less important topics */}
+          {/* Main Topic List */}
           <Col md={8}>
-            <Card className="shadow-sm mb-4">
-              <Card.Body>
-                <Row className="trending-section py-2">
-                  <h4 className='ms-3 fs-2'>Lastest</h4>
-                  <Row className=" pb-2 mb-3 ms-2 text-muted">
-                    <Col md={6}>Topic</Col>
-                    <Col md={2} className="text-center">Replies</Col>
-                    <Col md={2} className="text-center">Views</Col>
-                    <Col md={2} className="text-center">Last Reply</Col>
-                  </Row>
+            <Card>
+              <Card.Header className="shadow-sm mb-2" style={{ backgroundColor: '#EBD3F8' }}>
+                <h4 className="ms-3 fs-2 mt-3">Latest</h4>
+                <Row className="pb-2 mb-3 ms-2 text-muted">
+                  <Col md={6}>Topic</Col>
+                  <Col md={2} className="text-center">Replies</Col>
+                  <Col md={2} className="text-center">Views</Col>
+                  <Col md={2} className="text-center">Last Reply</Col>
                 </Row>
+              </Card.Header>
+              <Card.Body>
                 {lessImportantTopics.map(topic => (
-                  <Row key={topic.id} className="align-items-center  py-3 border-bottom">
+                  <Row key={topic.id} className="align-items-center py-3 border-bottom">
                     <Col md={6}>
                       <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title">
                         📌 {topic.title}
@@ -58,28 +57,27 @@ const TopicScreen = () => {
                     <Col md={2} className="text-center text-muted">{topic.lastReply}</Col>
                   </Row>
                 ))}
-                
               </Card.Body>
             </Card>
           </Col>
 
-          {/* Small column for important topics */}
+          {/* Trending Topics */}
           <Col md={4}>
             <Card className="shadow-sm mb-4">
-              <Card.Body>
-                <Row className="trending-section py-2">
-                  <h4 className='ms-3 fs-2'>Trending</h4>
-                  <Row className="pb-2 mb-3 text-muted ms-1">
-                    <Col md={8}>Topic</Col>
-                  </Row>
+              <Card.Header className="shadow-sm mb-2" style={{ backgroundColor: '#EBD3F8' }}>
+                <h4 className="ms-3 fs-2 mt-3">Trending</h4>
+                <Row className="pb-2 mb-3 text-muted ms-1">
+                  <Col>Topic</Col>
                 </Row>
+              </Card.Header>
+              <Card.Body>
                 {importantTopics.map(topic => (
-                  <Row key={topic.id} className="align-items-center  py-3 border-bottom">
-                    <Col md={11}>
+                  <Row key={topic.id} className="align-items-center py-3 border-bottom">
+                    <Col>
                       <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title">
                         📌 {topic.title}
                       </Link>
-                      <div className="text-muted small ms-4">Posted by {topic.author}</div>
+                      <div className="text-muted small">Posted by {topic.author}</div>
                     </Col>
                   </Row>
                 ))}
@@ -89,9 +87,8 @@ const TopicScreen = () => {
         </Row>
 
         <div className="mt-4 text-center">
-  <Button className="custom-btn">Create New Topic</Button>
+          <Button className="custom-btn">Create New Topic</Button>
         </div>
-
       </Container>
     </>
   );

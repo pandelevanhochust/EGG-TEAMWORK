@@ -31,13 +31,13 @@
   h2{
     font-size: 1.5em;
   }
-  .lastest-section {
-    background-color: #b261e0; /* Màu tím nhạt */
+  /* .lastest-section {
+    background-color: #b261e0; 
   }
   
   .trending-section {
-    background-color: #c676f4; /* Màu tím nhạt */
-  }
+    background-color: #c676f4; 
+  } */
   /* Đổi font-family cho tất cả tiêu đề */
 .topic-title {
   font-family: 'Roboto', sans-serif; /* Hoặc font bạn muốn */
