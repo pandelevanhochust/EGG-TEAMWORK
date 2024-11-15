@@ -60,5 +60,8 @@
 }
 
 .custom-btn:hover {
-  background-color: #5a32a3;  /* Màu tím đậm hơn khi hover */
+  background-color: #a07ee1;  /* Màu tím đậm hơn khi hover */
+}
+.topic-title:hover {
+  color: #6f30e6;  /* Màu tím đậm hơn khi hover */
 }

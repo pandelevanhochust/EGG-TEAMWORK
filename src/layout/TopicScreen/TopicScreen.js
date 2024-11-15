@@ -35,10 +35,10 @@ const TopicScreen = () => {
           <Col md={8}>
             <Card>
               <Card.Header className="shadow-sm mb-2" style={{ backgroundColor: '#EBD3F8' }}>
-                <h4 className="ms-3 fs-2 mt-3">Latest</h4>
-                <Row className="pb-2 mb-3 ms-2 text-muted">
+                <h4 className="ms-3 fs-1.5 mt-3">Latest</h4>
+                <Row className="pb-2 mb-3 ms-2 text-muted" style={{ fontWeight: 'normal'}}>
                   <Col md={6}>Topic</Col>
-                  <Col md={2} className="text-center">Replies</Col>
+                  <Col md={2} className="text-center" >Replies</Col>
                   <Col md={2} className="text-center">Views</Col>
                   <Col md={2} className="text-center">Last Reply</Col>
                 </Row>
@@ -47,14 +47,14 @@ const TopicScreen = () => {
                 {lessImportantTopics.map(topic => (
                   <Row key={topic.id} className="align-items-center py-3 border-bottom">
                     <Col md={6}>
-                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title">
+                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title fs-1.6" style={{ fontWeight: 'normal'}}>
                         📌 {topic.title}
                       </Link>
-                      <div className="text-muted small">Posted by {topic.author}</div>
+                      <div className="text-muted small" style={{ fontWeight: 'normal'}}>Posted by {topic.author}</div>
                     </Col>
-                    <Col md={2} className="text-center">{topic.replies}</Col>
-                    <Col md={2} className="text-center">{topic.views}</Col>
-                    <Col md={2} className="text-center text-muted">{topic.lastReply}</Col>
+                    <Col md={2} className="text-center" style={{ fontWeight: 'normal'}}>{topic.replies}</Col>
+                    <Col md={2} className="text-center" style={{ fontWeight: 'normal'}}>{topic.views}</Col>
+                    <Col md={2} className="text-center text-muted" style={{ fontWeight: 'normal'}}>{topic.lastReply}</Col>
                   </Row>
                 ))}
               </Card.Body>
@@ -65,7 +65,7 @@ const TopicScreen = () => {
           <Col md={4}>
             <Card className="shadow-sm mb-4">
               <Card.Header className="shadow-sm mb-2" style={{ backgroundColor: '#EBD3F8' }}>
-                <h4 className="ms-3 fs-2 mt-3">Trending</h4>
+                <h4 className="ms-3 fs-1.5 mt-3">Trending</h4>
                 <Row className="pb-2 mb-3 text-muted ms-1">
                   <Col>Topic</Col>
                 </Row>
@@ -74,10 +74,10 @@ const TopicScreen = () => {
                 {importantTopics.map(topic => (
                   <Row key={topic.id} className="align-items-center py-3 border-bottom">
                     <Col>
-                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title">
+                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark topic-title" style={{ fontWeight: 'normal'}}>
                         📌 {topic.title}
                       </Link>
-                      <div className="text-muted small">Posted by {topic.author}</div>
+                      <div className="text-muted small" style={{ fontWeight: 'normal'}}>Posted by {topic.author}</div>
                     </Col>
                   </Row>
                 ))}

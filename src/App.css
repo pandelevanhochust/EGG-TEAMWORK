@@ -10,6 +10,7 @@
     --threads-container-color : #f9f9f9;
     --logo-color : #5a4da5;
     --thread-text-color : #333;
+    --topic-font: "Afacad Flux", sans-serif; /* Định nghĩa font cho topic */
 }
 
 .poppins-regular {

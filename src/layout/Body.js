@@ -61,7 +61,7 @@ const Body = () => {
                       <Link to={`/thread/${thread.id}`} className="fs-6 text-decoration-none text-dark topic-title" style={{ fontWeight: '500' }}>
                         📌 {thread.title}
                       </Link>
-                      <div className=" text-muted small mt-1 ms-auto">
+                      <div className=" text-muted small mt-1 ms-auto" style={{ fontWeight: '500' }}>
                         by {thread.author} • {thread.date} • Last by {thread.lastReplyUser}
                       </div>
                     </Col>
@@ -87,14 +87,14 @@ const Section = ({ title, data }) => {
           {data.map((thread) => (
             <Row key={thread.id} className="align-items-center py-3 border-bottom">
               <Col md={6}>
-                <Link to={`/thread/${thread.id}`} className="text-decoration-none text-dark topic-title fs-6" style={{ fontWeight: '500' }}>
+                <Link to={`/thread/${thread.id}`} className="text-decoration-none text-dark topic-title fs-6" style={{ fontWeight: 500 }}>
                   📌 {thread.title}
                 </Link>
-                <div className="text-muted small">by {thread.author}</div>
+                <div className="text-muted small ms-4" style={{ fontWeight: 500 }}>by {thread.author}</div>
               </Col>
-              <Col md={2} className="text-center">{thread.replies}</Col>
-              <Col md={2} className="text-center">{thread.views}</Col>
-              <Col md={2} className="text-center text-muted">{thread.lastReplyDate}</Col>
+              <Col md={2} className="text-center" style={{ fontWeight: 500 }}>{thread.replies}</Col>
+              <Col md={2} className="text-center" style={{ fontWeight: 500 }}>{thread.views}</Col>
+              <Col md={2} className="text-center text-muted" style={{ fontWeight: 500 }}>{thread.lastReplyDate}</Col>
             </Row>
           ))}
         </Card.Body>
