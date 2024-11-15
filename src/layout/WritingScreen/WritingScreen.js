@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Button, Card, Container, Dropdown, DropdownButton, Form, InputGroup, Nav, Tab } from 'react-bootstrap';
+import { Button, Card, Container, Dropdown, DropdownButton, Form, InputGroup, Nav, Tab } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import Header from '../Header';
-
 
 const WritingScreen = () => {
   const [threadTitle, setThreadTitle] = useState("Your Thread Title");
@@ -11,7 +12,8 @@ const WritingScreen = () => {
   const [pollOptions, setPollOptions] = useState(['']);
   const [pollDuration, setPollDuration] = useState('');
 
-  const topics =["Kiến thức","Thắc mắc"];
+  const topics = ["Kiến thức", "Thắc mắc"];
+  const navigate = useNavigate();
 
   const handleAddPollOption = () => {
     setPollOptions([...pollOptions, '']);
@@ -32,10 +34,23 @@ const WritingScreen = () => {
     <>
       <Header />
       <Container className="thread my-5">
-        <Breadcrumb className="custom-breadcrumb">
-          <Breadcrumb.Item href="/">Forums</Breadcrumb.Item>
-          <Breadcrumb.Item active>Create Thread</Breadcrumb.Item>
-        </Breadcrumb>
+      <div style={{ position: 'relative' }}>
+        <Button
+          variant="link"
+          className="back-button"
+          onClick={() => navigate('/')}
+          style={{
+            position: 'absolute',
+            textDecoration: 'none',
+            top: '-27px',
+            left: '-68px',
+            fontSize: '1.2rem',
+          }}
+        >
+          <FaArrowLeft style={{ marginRight: '5px' }} />
+          <span>Home</span>
+        </Button>
+      </div>
 
         <Card className="p-4 shadow-sm thread">
           <Card.Body>
@@ -48,8 +63,8 @@ const WritingScreen = () => {
                 onSelect={(e) => setSelectedCategory(e)}
               >
                 {topics.map((topic) => (
-                <Dropdown.Item eventKey={topic}>{topic}</Dropdown.Item>
-                ) )}
+                  <Dropdown.Item eventKey={topic} key={topic}>{topic}</Dropdown.Item>
+                ))}
               </DropdownButton>
 
               <Form.Control
@@ -63,10 +78,10 @@ const WritingScreen = () => {
             <Tab.Container defaultActiveKey={activeTab}>
               <Nav variant="tabs" className="mb-3" onSelect={(k) => setActiveTab(k)}>
                 <Nav.Item>
-                  <Nav.Link style={{color: "#AD49E1"}} eventKey="discussion">Discussion</Nav.Link>
+                  <Nav.Link style={{ color: "#AD49E1" }} eventKey="discussion">Discussion</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link style={{color: "#AD49E1"}} eventKey="poll">Poll</Nav.Link>
+                  <Nav.Link style={{ color: "#AD49E1" }} eventKey="poll">Poll</Nav.Link>
                 </Nav.Item>
               </Nav>
 
@@ -126,12 +141,11 @@ const WritingScreen = () => {
                     />
                   </Form.Group>
                 </Tab.Pane>
-
               </Tab.Content>
             </Tab.Container>
 
             <div className='text-end'>
-              <Button className="rounded-button mt-2 py-2" variant="primary" >Post Thread</Button>
+              <Button className="rounded-button mt-2 py-2" variant="primary">Post Thread</Button>
             </div>
           </Card.Body>
         </Card>
