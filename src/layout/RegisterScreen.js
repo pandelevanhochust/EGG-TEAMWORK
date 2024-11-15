@@ -21,7 +21,6 @@ const RegisterScreen = () => {
 
   return (
     <div className="register-screen-wrapper" style={{ position: 'relative' }}>
-      {/* Nút quay về homepage bên ngoài Container */}
       <Button
         variant="link"
         className="back-button"

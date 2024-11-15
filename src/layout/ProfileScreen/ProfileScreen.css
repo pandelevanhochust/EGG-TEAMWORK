@@ -1,12 +1,20 @@
-/* .register-screen {
-  height: 100vh;
-  background-color: var(--background-color);
-  font-size: 1.1rem;
+.back-button {
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
 }
- 
-.register-container {
-  width: 50%;
-  border-radius: 8px;
-  margin:auto;
+
+.back-button:hover {
+  color: #333;
+  transform: translateX(-2px);
+  text-decoration: none;
 }
- */
+
+.back-button:focus {
+  outline: none;
+  box-shadow: none;
+}

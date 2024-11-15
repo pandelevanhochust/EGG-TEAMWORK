@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Form, Nav, Row, Tab } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import Header from '../Header';
 import './ProfileScreen.css';
 
@@ -62,7 +64,7 @@ const ProfileScreen = () => {
   const [editableField, setEditableField] = useState(null); // Track which field is being edited
   const [editedValue, setEditedValue] = useState('');
   const [avatar, setAvatar] = useState(selectedUser.avatar); // Track avatar upload
-
+  const navigate = useNavigate();
 
   const handleEdit = (field) => {
     setEditableField(field);
@@ -99,148 +101,125 @@ const ProfileScreen = () => {
 
   return (
     <>
-    <Header/>
-    <Container fluid className="user-profile-screen d-flex flex-column justify-content-center align-items-center mt-4">
-      <Card className="user-profile-container shadow-sm p-4 w-75 mt-3">
-        <Card.Body>
-          <Row className="text-center my-4 d-flex justify-content-center align-items-center">
-            <h2 className="text-center my-1">User Profile</h2>
-          </Row>
-          <Form>
+      <Header />
+      <div style={{ position: 'relative' }}>
+        <Button
+          variant="link"
+          className="back-button"
+          onClick={() => navigate('/')}
+          style={{
+            position: 'absolute',
+            textDecoration: 'none',
+            top: '20px',
+            left: '20px',
+            fontSize: '1.2rem',
+          }}
+        >
+          <FaArrowLeft style={{ marginRight: '5px' }} />
+          <span>Home</span>
+        </Button>
+      </div>
+      <Container fluid className="user-profile-screen d-flex flex-column justify-content-center align-items-center mt-4">
+        <Card className="user-profile-container shadow-sm p-4 w-75 mt-3">
+          <Card.Body>
+            <Row className="text-center my-4 d-flex justify-content-center align-items-center">
+              <h2 className="text-center my-1">User Profile</h2>
+            </Row>
+            <Form>
 
-          <Row className="text-center my-4 d-flex justify-content-center align-items-center">
-            <div className="avatar-holder">
-              <img
-                src={avatar || 'https://via.placeholder.com/150'} // Default placeholder image
-                alt="User Avatar"
-                className="avatar-img rounded-circle mb-3"
-                style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-              />
-              <Form.Group controlId="formFile" className="mb-3">
-                <Form.Control
-                  type="file"
-                  accept="image/*"
-                  onChange={handleAvatarChange}
-                  className="avatar-upload"
-                />
-              </Form.Group>
-            </div>
-          </Row>
-
-            <Form.Group className="mb-3" controlId="first_name">
-              <Form.Label>First Name</Form.Label>
-              {editableField === 'first_name' ? (
-                <Row>
-                  <Col>
+              <Row className="text-center my-4 d-flex justify-content-center align-items-center">
+                <div className="avatar-holder">
+                  <img
+                    src={avatar || 'https://via.placeholder.com/150'} // Default placeholder image
+                    alt="User Avatar"
+                    className="avatar-img rounded-circle mb-3"
+                    style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+                  />
+                  <Form.Group controlId="formFile" className="mb-3">
                     <Form.Control
-                      type="text"
-                      value={editedValue}
-                      onChange={(e) => setEditedValue(e.target.value)}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleAvatarChange}
+                      className="avatar-upload"
                     />
-                  </Col>
-                  <Col xs="auto">
-                    <Button variant="success" onClick={handleSave}>
-                      Save
-                    </Button>{' '}
-                    <Button variant="secondary" onClick={handleCancel}>
-                      Cancel
-                    </Button>
-                  </Col>
-                </Row>
-              ) : (
-                <Row>
-                  <Col>{selectedUser.first_name}</Col>
-                  <Col xs="auto">
-                    <Button variant="primary" onClick={() => handleEdit('first_name')}>
-                      Edit
-                    </Button>
-                  </Col>
-                </Row>
-              )}
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="last_name">
-              <Form.Label>Last Name</Form.Label>
-              {editableField === 'last_name' ? (
-                <Row>
-                  <Col>
-                    <Form.Control
-                      type="text"
-                      value={editedValue}
-                      onChange={(e) => setEditedValue(e.target.value)}
-                    />
-                  </Col>
-                  <Col xs="auto">
-                    <Button variant="success" onClick={handleSave}>
-                      Save
-                    </Button>{' '}
-                    <Button variant="secondary" onClick={handleCancel}>
-                      Cancel
-                    </Button>
-                  </Col>
-                </Row>
-              ) : (
-                <Row>
-                  <Col>{selectedUser.last_name}</Col>
-                  <Col xs="auto">
-                    <Button variant="primary" onClick={() => handleEdit('last_name')}>
-                      Edit
-                    </Button>
-                  </Col>
-                </Row>
-              )}
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="dob">
-              <Form.Label>Date of Birth</Form.Label>
-              {editableField === 'dob' ? (
-                <Row>
-                  <Col>
-                    <Form.Control
-                      type="date"
-                      value={editedValue}
-                      onChange={(e) => setEditedValue(e.target.value)}
-                    />
-                  </Col>
-                  <Col xs="auto">
-                    <Button variant="success" onClick={handleSave}>Save</Button>{' '}
-                    <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
-                  </Col>
-                </Row>
-              ) : (
-                <Row>
-                  <Col>{selectedUser.dob}</Col>
-                  <Col xs="auto">
-                    <Button variant="primary" onClick={() => handleEdit('dob')}>Edit</Button>
-                  </Col>
-                </Row>
-              )}
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="membership">
-              <Form.Label>Membership</Form.Label>
-              <Row>
-                <Col>{selectedUser.membership ? 'Yes' : 'No'}</Col>
+                  </Form.Group>
+                </div>
               </Row>
-            </Form.Group>
 
-            {selectedUser.membership && (
-              <Form.Group className="mb-3" controlId="generation">
-                <Form.Label>Generation</Form.Label>
-                {editableField === 'generation' ? (
+              <Form.Group className="mb-3" controlId="first_name">
+                <Form.Label>First Name</Form.Label>
+                {editableField === 'first_name' ? (
                   <Row>
                     <Col>
                       <Form.Control
-                        as="select"
+                        type="text"
                         value={editedValue}
                         onChange={(e) => setEditedValue(e.target.value)}
-                      >
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((gen) => (
-                          <option key={gen} value={gen}>
-                            {gen}
-                          </option>
-                        ))}
-                      </Form.Control>
+                      />
+                    </Col>
+                    <Col xs="auto">
+                      <Button variant="success" onClick={handleSave}>
+                        Save
+                      </Button>{' '}
+                      <Button variant="secondary" onClick={handleCancel}>
+                        Cancel
+                      </Button>
+                    </Col>
+                  </Row>
+                ) : (
+                  <Row>
+                    <Col>{selectedUser.first_name}</Col>
+                    <Col xs="auto">
+                      <Button variant="primary" onClick={() => handleEdit('first_name')}>
+                        Edit
+                      </Button>
+                    </Col>
+                  </Row>
+                )}
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="last_name">
+                <Form.Label>Last Name</Form.Label>
+                {editableField === 'last_name' ? (
+                  <Row>
+                    <Col>
+                      <Form.Control
+                        type="text"
+                        value={editedValue}
+                        onChange={(e) => setEditedValue(e.target.value)}
+                      />
+                    </Col>
+                    <Col xs="auto">
+                      <Button variant="success" onClick={handleSave}>
+                        Save
+                      </Button>{' '}
+                      <Button variant="secondary" onClick={handleCancel}>
+                        Cancel
+                      </Button>
+                    </Col>
+                  </Row>
+                ) : (
+                  <Row>
+                    <Col>{selectedUser.last_name}</Col>
+                    <Col xs="auto">
+                      <Button variant="primary" onClick={() => handleEdit('last_name')}>
+                        Edit
+                      </Button>
+                    </Col>
+                  </Row>
+                )}
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="dob">
+                <Form.Label>Date of Birth</Form.Label>
+                {editableField === 'dob' ? (
+                  <Row>
+                    <Col>
+                      <Form.Control
+                        type="date"
+                        value={editedValue}
+                        onChange={(e) => setEditedValue(e.target.value)}
+                      />
                     </Col>
                     <Col xs="auto">
                       <Button variant="success" onClick={handleSave}>Save</Button>{' '}
@@ -249,77 +228,117 @@ const ProfileScreen = () => {
                   </Row>
                 ) : (
                   <Row>
-                    <Col>{selectedUser.generation}</Col>
+                    <Col>{selectedUser.dob}</Col>
                     <Col xs="auto">
-                      <Button variant="primary" onClick={() => handleEdit('generation')}>Edit</Button>
+                      <Button variant="primary" onClick={() => handleEdit('dob')}>Edit</Button>
                     </Col>
                   </Row>
                 )}
               </Form.Group>
-            )}
 
-            <Form.Group className="mb-3" controlId="email">
-              <Form.Label>Email</Form.Label>
-              {editableField === 'email' ? (
+              <Form.Group className="mb-3" controlId="membership">
+                <Form.Label>Membership</Form.Label>
                 <Row>
-                  <Col>
-                    <Form.Control
-                      type="email"
-                      value={editedValue}
-                      onChange={(e) => setEditedValue(e.target.value)}
-                    />
-                  </Col>
-                  <Col xs="auto">
-                    <Button variant="success" onClick={handleSave}>Save</Button>{' '}
-                    <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
-                  </Col>
+                  <Col>{selectedUser.membership ? 'Yes' : 'No'}</Col>
                 </Row>
-              ) : (
-                <Row>
-                  <Col>{selectedUser.email}</Col>
-                  <Col xs="auto">
-                    <Button variant="primary" onClick={() => handleEdit('email')}>Edit</Button>
-                  </Col>
-                </Row>
+              </Form.Group>
+
+              {selectedUser.membership && (
+                <Form.Group className="mb-3" controlId="generation">
+                  <Form.Label>Generation</Form.Label>
+                  {editableField === 'generation' ? (
+                    <Row>
+                      <Col>
+                        <Form.Control
+                          as="select"
+                          value={editedValue}
+                          onChange={(e) => setEditedValue(e.target.value)}
+                        >
+                          {[1, 2, 3, 4, 5, 6, 7, 8].map((gen) => (
+                            <option key={gen} value={gen}>
+                              {gen}
+                            </option>
+                          ))}
+                        </Form.Control>
+                      </Col>
+                      <Col xs="auto">
+                        <Button variant="success" onClick={handleSave}>Save</Button>{' '}
+                        <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
+                      </Col>
+                    </Row>
+                  ) : (
+                    <Row>
+                      <Col>{selectedUser.generation}</Col>
+                      <Col xs="auto">
+                        <Button variant="primary" onClick={() => handleEdit('generation')}>Edit</Button>
+                      </Col>
+                    </Row>
+                  )}
+                </Form.Group>
               )}
-            </Form.Group>
 
-            <Tab.Container defaultActiveKey="profile-posts">
-              <div className="profile-tabs mt-4">
-                <Nav variant="tabs">
-                  <Nav.Item>
-                    <Nav.Link style={{color:"#AD49E1"}}eventKey="profile-posts">Profile Posts</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link style={{color:"#AD49E1"}}eventKey="latest-activity">Latest Activity</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link style={{color:"#AD49E1"}}eventKey="postings">Postings</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link style={{color:"#AD49E1"}}eventKey="about">About</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </div>
-              <Tab.Content className="p-3">
-                <Tab.Pane eventKey="profile-posts">
-                  <p>Profile posts content goes here...</p>
-                </Tab.Pane>
-                <Tab.Pane eventKey="latest-activity">
-                  <p>Latest activity content goes here...</p>
-                </Tab.Pane>
-                <Tab.Pane eventKey="postings">
-                  <p>Postings content goes here...</p>
-                </Tab.Pane>
-                <Tab.Pane eventKey="about">
-                  <p>About content goes here...</p>
-                </Tab.Pane>
-              </Tab.Content>
-            </Tab.Container>
-          </Form>
-        </Card.Body>
-      </Card>
-    </Container>
+              <Form.Group className="mb-3" controlId="email">
+                <Form.Label>Email</Form.Label>
+                {editableField === 'email' ? (
+                  <Row>
+                    <Col>
+                      <Form.Control
+                        type="email"
+                        value={editedValue}
+                        onChange={(e) => setEditedValue(e.target.value)}
+                      />
+                    </Col>
+                    <Col xs="auto">
+                      <Button variant="success" onClick={handleSave}>Save</Button>{' '}
+                      <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
+                    </Col>
+                  </Row>
+                ) : (
+                  <Row>
+                    <Col>{selectedUser.email}</Col>
+                    <Col xs="auto">
+                      <Button variant="primary" onClick={() => handleEdit('email')}>Edit</Button>
+                    </Col>
+                  </Row>
+                )}
+              </Form.Group>
+
+              <Tab.Container defaultActiveKey="profile-posts">
+                <div className="profile-tabs mt-4">
+                  <Nav variant="tabs">
+                    <Nav.Item>
+                      <Nav.Link style={{ color: "#AD49E1" }} eventKey="profile-posts">Profile Posts</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link style={{ color: "#AD49E1" }} eventKey="latest-activity">Latest Activity</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link style={{ color: "#AD49E1" }} eventKey="postings">Postings</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link style={{ color: "#AD49E1" }} eventKey="about">About</Nav.Link>
+                    </Nav.Item>
+                  </Nav>
+                </div>
+                <Tab.Content className="p-3">
+                  <Tab.Pane eventKey="profile-posts">
+                    <p>Profile posts content goes here...</p>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="latest-activity">
+                    <p>Latest activity content goes here...</p>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="postings">
+                    <p>Postings content goes here...</p>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="about">
+                    <p>About content goes here...</p>
+                  </Tab.Pane>
+                </Tab.Content>
+              </Tab.Container>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Container>
 
     </>
   );
