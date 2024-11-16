@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Card, Col, Container, Form, ListGroup, Row, Button } from 'react-bootstrap';
+import { Breadcrumb, Button, Card, Col, Container, Form, ListGroup, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import Header from '../Header';
 
@@ -114,7 +114,7 @@ const PostScreen = () => {
                     </Col>
                   </Row>
                 ))}
-                <Row className="align-items-center py-3">
+                <Row className="align-items-center py-2">
                   <Col>
                     <Form.Group className="my-3" controlId="comment">
                       <Form.Label>Your Comment</Form.Label>
@@ -126,8 +126,8 @@ const PostScreen = () => {
                         className="py-3 mt-2"
                         onChange={(e) => setUser_comment(e.target.value)}
                       />
-                      <div className="mt-4 text-center" style={{ color: '#EBD3F8' }}>
-                        <Button>Comment</Button>
+                      <div className="mt-4 text-end">
+                        <Button className='rounded-button'>Comment</Button>
                       </div>
                     </Form.Group>
                   </Col>
