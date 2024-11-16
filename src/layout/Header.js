@@ -20,12 +20,12 @@ import GuestAvatarImg from '../assets/guest-avatar.png'; // Avatar cho khách
 import './Header.css';
 
 const HeaderWithSideNav = () => {
-  const [userState, setUserState] = useState(true);
+  const [userState, setUserState] = useState(true); // Trạng thái đăng nhập
   const [Search_key, setSearch_key] = useState('');
   const [Notification, setNotification] = useState(false);
   const [searchExpanded, setSearchExpanded] = useState(false);
-  const [showSideNav, setShowSideNav] = useState(false);
-  const [username, setUsername] = useState('Toan Le Van'); // Đổi tên biến thành username
+  const [showSideNav, setShowSideNav] = useState(false); // Sidebar mở hay đóng
+  const [username, setUsername] = useState('Toan Le Van'); // Tên người dùng
   const notifications = ['Notification 1', 'Notification 2', 'Notification 3'];
 
   const navigate = useNavigate();
@@ -37,15 +37,10 @@ const HeaderWithSideNav = () => {
   };
 
   const Logout = () => {
-    setUserState(false);
-    setUsername(null); // Đặt tên người dùng thành null khi đăng xuất
-    navigate('/');
+    setUserState(false); // Đánh dấu người dùng đăng xuất
+    setUsername(null); // Đặt tên người dùng thành null
+    navigate('/'); // Chuyển hướng về trang chủ
   };
-
-  const Login = () => {
-    navigate('/login');
-  };
-
   return (
     <>
       {/* Navbar */}
@@ -199,42 +194,40 @@ const HeaderWithSideNav = () => {
         </Navbar>
       </header>
 
-      {/* Offcanvas SideNav */}
-      <Offcanvas
-        show={showSideNav}
-        onHide={() => setShowSideNav(false)}
-        style={{ width: '250px' }}
-        placement="end"
-      >
-        <Offcanvas.Header closeButton style={{ backgroundColor: '#EBD3F8' }}>
-          <Image
-            src={userState ? AvatarImg : GuestAvatarImg} // Avatar thay đổi khi đăng xuất
-            alt="User Avatar"
-            rounded
-            fluid
-            style={{
-              cursor: 'pointer',
-              width: '55px',
-              height: '55px',
-              boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.2)',
-              marginRight: '10px'
-            }}
-          />
-          <Offcanvas.Title>{userState ? username : 'Guest'}</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <Nav className="flex-column">
-            <Nav.Link href="/" className="mb-3">Home</Nav.Link>
-            <Nav.Link href="/topic" className="mb-3">Forums</Nav.Link>
-            <Nav.Link href="/settings" className="mb-3">Settings</Nav.Link>
-            {userState ? (
+      {/* Offcanvas SideNav - chỉ hiển thị khi người dùng đã đăng nhập */}
+      {userState && (
+        <Offcanvas
+          show={showSideNav}
+          onHide={() => setShowSideNav(false)}
+          style={{ width: '250px' }}
+          placement="end"
+        >
+          <Offcanvas.Header closeButton style={{ backgroundColor: '#EBD3F8' }}>
+            <Image
+              src={userState ? AvatarImg : GuestAvatarImg} // Avatar thay đổi khi đăng xuất
+              alt="User Avatar"
+              rounded
+              fluid
+              style={{
+                cursor: 'pointer',
+                width: '55px',
+                height: '55px',
+                boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.2)',
+                marginRight: '10px'
+              }}
+            />
+            <Offcanvas.Title>{userState ? username : 'Guest'}</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Nav className="flex-column">
+              <Nav.Link href="/" className="mb-3">Home</Nav.Link>
+              <Nav.Link href="/topic" className="mb-3">Forums</Nav.Link>
+              <Nav.Link href="/settings" className="mb-3">Settings</Nav.Link>
               <NavDropdown.Item className='mb-3 ms-3' style={{ fontWeight: '700', color: '#AD49E1' }} onClick={Logout}>Logout</NavDropdown.Item>
-            ) : (
-              <NavDropdown.Item className='mb-3 ms-3' style={{ fontWeight: '700', color: '#AD49E1' }} onClick={Login}>Log in</NavDropdown.Item>
-            )}
-          </Nav>
-        </Offcanvas.Body>
-      </Offcanvas>
+            </Nav>
+          </Offcanvas.Body>
+        </Offcanvas>
+      )}
     </>
   );
 };
