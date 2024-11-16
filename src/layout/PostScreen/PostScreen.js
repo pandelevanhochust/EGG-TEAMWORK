@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Card, Container, Form, ListGroup, ListGroupItem, Row, Col, Badge } from 'react-bootstrap';
+import { Breadcrumb, Card, Container, Form, ListGroup, ListGroupItem, Row, Col, Badge, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import Header from '../Header';
 
@@ -93,6 +93,20 @@ const PostScreen = () => {
                     onChange={(e) => setUser_comment(e.target.value)}
                   />
                 </Form.Group>
+                <div className="text-end">
+                  <Button
+                    variant="primary"
+                    className="rounded-button mt-2 py-2"
+                    onClick={() => {
+                      // Logic xử lý khi nhấn nút comment
+                      console.log("User Comment:", user_comment);
+                      // Ví dụ: clear input sau khi gửi
+                      setUser_comment('');
+                    }}
+                  >
+                    Comment
+                  </Button>
+                </div>
               </ListGroupItem>
             </Card>
           </ListGroup>

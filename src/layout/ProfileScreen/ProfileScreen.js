@@ -5,7 +5,6 @@ import { FaArrowLeft } from 'react-icons/fa';
 import Header from '../Header';
 import './ProfileScreen.css';
 
-// Mock user data
 const mockUsers = [
   {
     id: 1,
@@ -60,10 +59,10 @@ const mockUsers = [
 ];
 
 const ProfileScreen = () => {
-  const [selectedUser, setSelectedUser] = useState(mockUsers[0]); // Select the first user
-  const [editableField, setEditableField] = useState(null); // Track which field is being edited
+  const [selectedUser, setSelectedUser] = useState(mockUsers[0]);
+  const [editableField, setEditableField] = useState(null);
   const [editedValue, setEditedValue] = useState('');
-  const [avatar, setAvatar] = useState(selectedUser.avatar); // Track avatar upload
+  const [avatar, setAvatar] = useState(selectedUser.avatar);
   const navigate = useNavigate();
 
   const handleEdit = (field) => {
@@ -149,32 +148,26 @@ const ProfileScreen = () => {
               <Form.Group className="mb-3" controlId="first_name">
                 <Form.Label>First Name</Form.Label>
                 {editableField === 'first_name' ? (
-                  <Row>
-                    <Col>
-                      <Form.Control
-                        type="text"
-                        value={editedValue}
-                        onChange={(e) => setEditedValue(e.target.value)}
-                      />
-                    </Col>
-                    <Col xs="auto">
-                      <Button variant="success" onClick={handleSave}>
-                        Save
-                      </Button>{' '}
-                      <Button variant="secondary" onClick={handleCancel}>
-                        Cancel
-                      </Button>
-                    </Col>
-                  </Row>
+                  <div className="edit-row">
+                    <Form.Control
+                      type="text"
+                      value={editedValue}
+                      onChange={(e) => setEditedValue(e.target.value)}
+                    />
+                    <Button variant="success" className="save-button" onClick={handleSave}>
+                      Save
+                    </Button>
+                    <Button variant="secondary" className="cancel-button" onClick={handleCancel}>
+                      Cancel
+                    </Button>
+                  </div>
                 ) : (
-                  <Row>
-                    <Col>{selectedUser.first_name}</Col>
-                    <Col xs="auto">
-                      <Button variant="primary" onClick={() => handleEdit('first_name')}>
-                        Edit
-                      </Button>
-                    </Col>
-                  </Row>
+                  <div className="edit-row">
+                    <span>{selectedUser.first_name}</span>
+                    <Button variant="primary" className="edit-button" onClick={() => handleEdit('first_name')}>
+                      Edit
+                    </Button>
+                  </div>
                 )}
               </Form.Group>
 

@@ -18,3 +18,57 @@
   outline: none;
   box-shadow: none;
 }
+
+.user-profile-screen {
+  font-family: 'Roboto', sans-serif; /* Sử dụng font chữ đẹp */
+  font-size: 1rem; /* Kích thước chữ mặc định */
+  line-height: 1.6; /* Tăng khoảng cách giữa các dòng để dễ đọc */
+}
+
+.user-profile-container {
+  border-radius: 12px; /* Bo góc cho card */
+}
+
+.avatar-holder {
+  text-align: center;
+}
+
+.avatar-img {
+  border: 2px solid #AD49E1; /* Viền màu nổi bật */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
+
+.avatar-upload {
+  font-size: 0.9rem; /* Giảm kích thước chữ */
+}
+
+.form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.profile-tabs .nav-link {
+  font-weight: bold;
+  color: #333;
+}
+
+.profile-tabs .nav-link.active {
+  color: #AD49E1;
+  border-bottom: 2px solid #AD49E1;
+}
+
+.edit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-button {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+}
+
+.save-button, .cancel-button {
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
