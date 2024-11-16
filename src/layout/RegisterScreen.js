@@ -7,6 +7,7 @@ import './RegisterScreen.css';
 const RegisterScreen = () => {
   const [Membership, setMembership] = useState(false);
   const gen = [1, 2, 3, 4, 5, 6, 7, 8];
+
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
   const [email, setEmail] = useState('');
@@ -15,8 +16,17 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState('');
   const [confirmpw, setConfirmpw] = useState('');
   const [generation, setGen] = useState('');
-  
-  const navigate = useNavigate();
+
+  // const navigate = useNavigate();
+
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   if(password !== confirmpw){
+  //     alert("Passwords mismatch");
+  //   }else{
+  //     navigate("/");
+  //   }
+  // };
 
   return (
     <Container fluid className="register-screen d-flex justify-content-center align-items-center mt-2">
@@ -163,29 +173,17 @@ const RegisterScreen = () => {
             <Button variant="primary" type="submit" className="w-100 mt-3 rounded-button">
               Register
             </Button>
-
-            <div className="d-flex align-items-center gap-5 justify-content-center mt-3 ms-auto">
-            <Row>
-            <Button
-              variant="secondary"
-              className="w-100 mt-2 rounded-button"
-              onClick={() => navigate('/register')}
-            >
-              I already have account 
-            </Button>
-            </Row>
-            <Row>
-            <Button
-              variant="secondary"
-              className="w-100 mt-2 rounded-button"
-              onClick={() => navigate('/')}
-            >
-              Return
-            </Button>
-            </Row>
-            </div>
+          </Link>
 
           </Form>
+
+          {/* Already have an account */}
+          <div className="text-center mt-3">
+            <span>Already have an account? </span>
+            <Link to="/login" className="text-decoration-none ms-3" style={{ color: "var(--button-color)" }}>
+              Log in
+            </Link>
+          </div>
         </Card.Body>
       </Card>
     </Container>

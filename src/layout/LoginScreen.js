@@ -35,28 +35,20 @@ const LoginScreen = () => {
             <Button variant="primary" type="submit" className="w-100 mt-3 rounded-button">
               Login
             </Button>
-            
-            {/* <div className="d-flex align-items-center gap-5 justify-content-center mt-3 ms-auto">
-            <Row>
-            <Button
-              variant="secondary"
-              className="w-100 mt-2 rounded-button"
-              onClick={() => navigate('/register')}
-            >
-              I already have account 
-            </Button>
-            </Row>
-            <Row>
-            <Button
-              variant="secondary"
-              className="w-100 mt-2 rounded-button"
-              onClick={() => navigate('/')}
-            >
-              Return
-            </Button>
-            </Row>
-            </div> */}
-            
+
+            {/* Forgotten Password */}
+            <div className="text-center mt-3">
+              <Link to="/forgot-password" className="text-decoration-none" style={{ color: "var(--button-color)" }}>
+                Forgotten Password?
+              </Link>
+            </div>
+            <hr></hr>
+            {/* Create New Account */}
+            <div className="text-center mt-3">
+              <Link to="/register" className="text-decoration-none" style={{ color: "var(--button-color)" }}>
+                Create New Account
+              </Link>
+            </div>
           </Form>
         </Card.Body>
       </Card>
