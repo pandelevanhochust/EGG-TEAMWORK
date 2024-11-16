@@ -19,8 +19,8 @@ const RegisterScreen = () => {
   const navigate = useNavigate();
 
   return (
-    <Container fluid className="register-screen d-flex justify-content-center align-items-center mt-4">
-      <Card className="register-container shadow-sm p-4">
+    <Container fluid className="register-screen d-flex justify-content-center align-items-center mt-2">
+      <Card className="register-container shadow-sm p-1">
         <Card.Body>
           <Row className="text-center my-4 d-flex justify-content-center align-items-center ">
             <img
@@ -30,12 +30,12 @@ const RegisterScreen = () => {
               onClick={() => navigate('/')}
               style={{ cursor: 'pointer' }}
             />
-            <h2 className="text-center my-1">Register</h2>
+            <h2 className="text-center">Register</h2>
           </Row>
           <Form>
             <Row>
               <Col>
-                <Form.Group className="mb-4" controlId="first_name">
+                <Form.Group className="mb-2" controlId="first_name">
                   <Form.Label>First name</Form.Label>
                   <Form.Control
                     type="text"
@@ -47,7 +47,7 @@ const RegisterScreen = () => {
                 </Form.Group>
               </Col>
               <Col>
-                <Form.Group className="mb-4" controlId="second_name">
+                <Form.Group className="mb-2" controlId="second_name">
                   <Form.Label>Second name</Form.Label>
                   <Form.Control
                     type="text"
@@ -60,7 +60,7 @@ const RegisterScreen = () => {
               </Col>
             </Row>
 
-            <Form.Group className="mb-4" controlId="dob">
+            <Form.Group className="mb-2" controlId="dob">
               <Form.Label>D.O.B</Form.Label>
               <Form.Control
                 type="date"
@@ -70,7 +70,7 @@ const RegisterScreen = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="membership">
+            <Form.Group className="mb-2" controlId="membership">
               <Form.Label>Are you a member of EGG?</Form.Label>
               <Row>
                 <Col xs="auto">
@@ -101,7 +101,7 @@ const RegisterScreen = () => {
             </Form.Group>
 
             {Membership && (
-              <Form.Group className="mb-4" controlId="gen">
+              <Form.Group className="mb-2" controlId="gen">
                 <Form.Label>Which Gen are you as an EGG-er?</Form.Label>
                 <Form.Select
                   required
@@ -116,7 +116,7 @@ const RegisterScreen = () => {
               </Form.Group>
             )}
 
-            <Form.Group className="mb-4" controlId="username">
+            <Form.Group className="mb-2" controlId="username">
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
@@ -127,7 +127,7 @@ const RegisterScreen = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="email">
+            <Form.Group className="mb-2" controlId="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -138,7 +138,7 @@ const RegisterScreen = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="password">
+            <Form.Group className="mb-2" controlId="password">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
@@ -149,7 +149,7 @@ const RegisterScreen = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="confirm_password">
+            <Form.Group className="mb-2" controlId="confirm_password">
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
                 type="password"
