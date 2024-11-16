@@ -220,10 +220,11 @@ const HeaderWithSideNav = () => {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="flex-column">
-              <Nav.Link href="/" className="mb-3">Home</Nav.Link>
-              <Nav.Link href="/topic" className="mb-3">Forums</Nav.Link>
-              <Nav.Link href="/settings" className="mb-3">Settings</Nav.Link>
-              <NavDropdown.Item className='mb-3 ms-3' style={{ fontWeight: '700', color: '#AD49E1' }} onClick={Logout}>Logout</NavDropdown.Item>
+              <Nav.Link href="/profile" className="mb-3" style={{color: "#333"}}>Profile</Nav.Link>
+              <Nav.Link href="/" className="mb-3" style={{color: "#333"}}>Home</Nav.Link>
+              <Nav.Link href="/topic" className="mb-3" style={{color: "#333"}}>Forums</Nav.Link>
+              <Nav.Link href="/settings" className="mb-3" style={{color: "#333"}}>Settings</Nav.Link>
+              <NavDropdown.Item className='mb-3 ms-3 mt-2' style={{ fontWeight: '700', color: '#333' }} onClick={Logout}>Logout</NavDropdown.Item>
             </Nav>
           </Offcanvas.Body>
         </Offcanvas>
