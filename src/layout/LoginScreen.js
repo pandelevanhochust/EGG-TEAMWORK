@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button, Card, Container, Form, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link nếu bạn sử dụng React Router
 import { FaArrowLeft } from 'react-icons/fa';
 import Logo from '../assets/Logo1.png';
 import './LoginScreen.css';
 
 const LoginScreen = () => {
+
   const navigate = useNavigate();
 
   return (

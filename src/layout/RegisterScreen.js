@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/Logo1.png';
 import { FaArrowLeft } from 'react-icons/fa';
 import './RegisterScreen.css';
@@ -8,6 +8,7 @@ import './RegisterScreen.css';
 const RegisterScreen = () => {
   const [Membership, setMembership] = useState(false);
   const gen = [1, 2, 3, 4, 5, 6, 7, 8];
+
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
   const [email, setEmail] = useState('');
@@ -16,6 +17,7 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState('');
   const [confirmpw, setConfirmpw] = useState('');
   const [generation, setGen] = useState('');
+
 
   const navigate = useNavigate();
 

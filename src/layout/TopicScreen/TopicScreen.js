@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumb, Card, Col, Container, Row, Button } from 'react-bootstrap';
+import { Breadcrumb, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Header from '../Header';
 import './TopicScreen.css';
@@ -16,9 +16,9 @@ const TopicScreen = () => {
     { id: 8, title: 'Tạm cấm tất cả các thread có nội dung “bóc phốt” hay tương tự', replies: 0, views: '21K', lastReply: 'Dec 27, 2021', author: 'Admin' }
   ];
 
-  // Sort important topics by the highest number of replies or views
-  const importantTopics = topics.filter(topic => topic.replies >= 4); // For example, topics with 4 or more replies
-  const lessImportantTopics = topics.filter(topic => topic.replies < 4); // Topics with fewer replies
+  const sortedTopics = [...topics].sort((a, b) => new Date(b.lastReply) - new Date(a.lastReply));
+  const importantTopics = sortedTopics.filter(topic => topic.replies >= 4);
+  const lessImportantTopics = sortedTopics.filter(topic => topic.replies < 4);
 
   return (
     <>
@@ -31,58 +31,53 @@ const TopicScreen = () => {
 
         <h2 className="mb-4 text-black">All Topics</h2>
         <Row>
-          {/* Large column for important topics */}
+          {/* Main Topic List */}
           <Col md={8}>
-            <Card className="shadow-sm mb-4">
-              <Card.Body>
-                <h4>Important Topics</h4>
-                <Row className="border-bottom pb-2 mb-3 text-muted">
+            <Card>
+              <Card.Header className="shadow-sm mb-2" style={{ backgroundColor: '#EBD3F8' }}>
+                <h4 className="ms-3 fs-2.5 mt-3">Latest</h4>
+                <Row className="pb-2 mb-3 ms-2 text-muted" style={{ fontWeight: 'normal'}}>
                   <Col md={6}>Topic</Col>
-                  <Col md={2} className="text-center">Replies</Col>
+                  <Col md={2} className="text-center" >Replies</Col>
                   <Col md={2} className="text-center">Views</Col>
                   <Col md={2} className="text-center">Last Reply</Col>
                 </Row>
-
-                {importantTopics.map(topic => (
+              </Card.Header>
+              <Card.Body>
+                {lessImportantTopics.map(topic => (
                   <Row key={topic.id} className="align-items-center py-3 border-bottom">
                     <Col md={6}>
-                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark">
+                      <Link to={`/thread/${topic.id}`} className="text-decoration-none text-dark topic-title" style={{ fontWeight: 'normal'}}>
                         📌 {topic.title}
                       </Link>
-                      <div className="text-muted small">Posted by {topic.author}</div>
+                      <div className="text-muted small" style={{ fontWeight: 'normal'}}>Posted by {topic.author}</div>
                     </Col>
-                    <Col md={2} className="text-center">{topic.replies}</Col>
-                    <Col md={2} className="text-center">{topic.views}</Col>
-                    <Col md={2} className="text-center text-muted">{topic.lastReply}</Col>
+                    <Col md={2} className="text-center" style={{ fontWeight: 'normal'}}>{topic.replies}</Col>
+                    <Col md={2} className="text-center" style={{ fontWeight: 'normal'}}>{topic.views}</Col>
+                    <Col md={2} className="text-center text-muted" style={{ fontWeight: 'normal'}}>{topic.lastReply}</Col>
                   </Row>
                 ))}
               </Card.Body>
             </Card>
           </Col>
 
-          {/* Small column for less important topics */}
+          {/* Trending Topics */}
           <Col md={4}>
             <Card className="shadow-sm mb-4">
-              <Card.Body>
-                <h4>Less Important Topics</h4>
-                <Row className="border-bottom pb-2 mb-3 text-muted">
-                  <Col md={6}>Topic</Col>
-                  <Col md={2} className="text-center">Replies</Col>
-                  <Col md={2} className="text-center">Views</Col>
-                  <Col md={2} className="text-center">Last Reply</Col>
+              <Card.Header className="shadow-sm mb-2" style={{ backgroundColor: '#EBD3F8' }}>
+                <h4 className="ms-3 fs-1.5 mt-3">Trending Thread</h4>
+                <Row className="pb-2 mb-3 text-muted ms-1">
                 </Row>
-
-                {lessImportantTopics.map(topic => (
+              </Card.Header>
+              <Card.Body>
+                {importantTopics.map(topic => (
                   <Row key={topic.id} className="align-items-center py-3 border-bottom">
-                    <Col md={6}>
-                      <Link to={`/topic/${topic.id}`} className="text-decoration-none text-dark">
+                    <Col>
+                      <Link to={`/thread/${topic.id}`} className="text-decoration-none text-dark topic-title" style={{ fontWeight: 'normal'}}>
                         📌 {topic.title}
                       </Link>
-                      <div className="text-muted small">Posted by {topic.author}</div>
+                      <div className="text-muted small" style={{ fontWeight: 'normal'}}>Posted by {topic.author}</div>
                     </Col>
-                    <Col md={2} className="text-center">{topic.replies}</Col>
-                    <Col md={2} className="text-center">{topic.views}</Col>
-                    <Col md={2} className="text-center text-muted">{topic.lastReply}</Col>
                   </Row>
                 ))}
               </Card.Body>
@@ -91,7 +86,7 @@ const TopicScreen = () => {
         </Row>
 
         <div className="mt-4 text-center">
-          <Button variant="primary">Create New Topic</Button>
+          <Button className="custom-btn">Create New Topic</Button>
         </div>
       </Container>
     </>
