@@ -127,7 +127,7 @@ const PostScreen = () => {
                         onChange={(e) => setUser_comment(e.target.value)}
                       />
                       <div className="mt-4 text-center" style={{ color: '#EBD3F8' }}>
-                        <Button>Push</Button>
+                        <Button>Comment</Button>
                       </div>
                     </Form.Group>
                   </Col>
