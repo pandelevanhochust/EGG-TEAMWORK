@@ -8,14 +8,15 @@ import {
   ListGroup,
   Nav,
   Navbar,
-  NavDropdown,
   Offcanvas,
+  NavDropdown
 } from 'react-bootstrap';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { IoIosNotifications, IoIosSearch } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/Logo1.png';
-import AvatarImg from '../assets/avatar.png';
+import AvatarImg from '../assets/avatar.png'; // Avatar mặc định
+import GuestAvatarImg from '../assets/guest-avatar.png'; // Avatar cho khách
 import './Header.css';
 
 const HeaderWithSideNav = () => {
@@ -24,7 +25,7 @@ const HeaderWithSideNav = () => {
   const [Notification, setNotification] = useState(false);
   const [searchExpanded, setSearchExpanded] = useState(false);
   const [showSideNav, setShowSideNav] = useState(false);
-
+  const [username, setUsername] = useState('Toan Le Van'); // Đổi tên biến thành username
   const notifications = ['Notification 1', 'Notification 2', 'Notification 3'];
 
   const navigate = useNavigate();
@@ -37,30 +38,20 @@ const HeaderWithSideNav = () => {
 
   const Logout = () => {
     setUserState(false);
+    setUsername(null); // Đặt tên người dùng thành null khi đăng xuất
     navigate('/');
+  };
+
+  const Login = () => {
+    navigate('/login');
   };
 
   return (
     <>
-      {/* Navbar Ngang */}
+      {/* Navbar */}
       <header>
         <Navbar className="navbar_header" sticky="top" expand="lg" style={{ width: '100%' }}>
           <Container fluid className="py-2 d-flex align-items-center justify-content-between">
-            {/* Nút mở SideNav */}
-            <Button
-              variant="light"
-              onClick={() => setShowSideNav(true)}
-              className="me-3"
-              style={{
-                borderRadius: '50%',
-                width: '40px',
-                height: '40px',
-                boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-              }}
-            >
-              ☰
-            </Button>
-
             {/* Logo */}
             <Navbar.Brand href="/" className="d-flex align-items-center egglogo p-3">
               <Image src={Logo} alt="Logo" rounded fluid style={{ width: '50px', height: '50px' }} />
@@ -115,7 +106,7 @@ const HeaderWithSideNav = () => {
             <Navbar.Toggle aria-controls="navbar-content" />
 
             <Navbar.Collapse id="navbar-content" className="d-lg-flex justify-content-end">
-              {userState && (
+              {userState ? (
                 <Nav className="d-flex flex-row align-items-center gap-3 auth-buttons">
                   <Link to="/writing">
                     <Button
@@ -174,31 +165,22 @@ const HeaderWithSideNav = () => {
                     </Card>
                   )}
 
-                  <NavDropdown
-                    title={
-                      <Image
-                        src={AvatarImg}
-                        alt="User Avatar"
-                        rounded
-                        fluid
-                        style={{
-                          width: '55px',
-                          height: '55px',
-                          boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.2)',
-                        }}
-                      />
-                    }
-                    id="avatar-dropdown"
-                  >
-                    <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
-                    <NavDropdown.Item href="/settings">Settings</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
-                  </NavDropdown>
+                  {/* Thay avatar */}
+                  <Image
+                    src={AvatarImg}
+                    alt="User Avatar"
+                    rounded
+                    fluid
+                    onClick={() => setShowSideNav(true)} // Bấm mở SideNav
+                    style={{
+                      cursor: 'pointer',
+                      width: '55px',
+                      height: '55px',
+                      boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.2)',
+                    }}
+                  />
                 </Nav>
-              )}
-
-              {!userState && (
+              ) : (
                 <Nav className="d-flex flex-row align-items-center gap-3 auth-buttons">
                   <Link to="/login">
                     <Button variant="primary" className="custom-button rounded-button shadow d-flex align-items-center justify-content-center">
@@ -222,17 +204,36 @@ const HeaderWithSideNav = () => {
         show={showSideNav}
         onHide={() => setShowSideNav(false)}
         style={{ width: '250px' }}
-        >
-          <Offcanvas.Header closeButton style={{ backgroundColor: '#EBD3F8' }}>
-            <Offcanvas.Title>EGG Forums</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="flex-column">
-              <Nav.Link href="/" className="mb-3">Home</Nav.Link>
-              <Nav.Link href="/topic" className="mb-3">Forums</Nav.Link>
-              <Nav.Link href="/settings" className="mb-3">Settings</Nav.Link>
-            </Nav>
-          </Offcanvas.Body>
+        placement="end"
+      >
+        <Offcanvas.Header closeButton style={{ backgroundColor: '#EBD3F8' }}>
+          <Image
+            src={userState ? AvatarImg : GuestAvatarImg} // Avatar thay đổi khi đăng xuất
+            alt="User Avatar"
+            rounded
+            fluid
+            style={{
+              cursor: 'pointer',
+              width: '55px',
+              height: '55px',
+              boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.2)',
+              marginRight: '10px'
+            }}
+          />
+          <Offcanvas.Title>{userState ? username : 'Guest'}</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <Nav className="flex-column">
+            <Nav.Link href="/" className="mb-3">Home</Nav.Link>
+            <Nav.Link href="/topic" className="mb-3">Forums</Nav.Link>
+            <Nav.Link href="/settings" className="mb-3">Settings</Nav.Link>
+            {userState ? (
+              <NavDropdown.Item className='mb-3 ms-3' style={{ fontWeight: '700', color: '#AD49E1' }} onClick={Logout}>Logout</NavDropdown.Item>
+            ) : (
+              <NavDropdown.Item className='mb-3 ms-3' style={{ fontWeight: '700', color: '#AD49E1' }} onClick={Login}>Log in</NavDropdown.Item>
+            )}
+          </Nav>
+        </Offcanvas.Body>
       </Offcanvas>
     </>
   );
