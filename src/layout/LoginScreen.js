@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Card, Container, Form, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link nếu bạn sử dụng React Router
 import Logo from '../assets/Logo1.png';
 import './LoginScreen.css';
 
 const LoginScreen = () => {
+
   const navigate = useNavigate();
 
   return (
@@ -12,13 +13,9 @@ const LoginScreen = () => {
       <Card className="login-container shadow-sm p-4">
         <Card.Body>
           <Row className="text-center my-4 d-flex justify-content-center align-items-center ">
-            <img
-              src={Logo}
-              alt="Logo"
-              className="logo-img"
-              onClick={() => navigate('/')}
-              style={{ cursor: 'pointer' }}
-            />
+          <Link href ="/">
+            <img src={Logo} alt="Logo" className="logo-img" onClick={navigate("/")} />
+            </Link>
             <h2 className="text-center my-1">Log in</h2>
           </Row>
           <Form>
